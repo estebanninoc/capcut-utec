@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso Editor CapCut PRO — De 0 a viral en celular y PC</title>
+<meta name="description" content="192 clases en video para editar en CapCut como los virales. Celular y PC. Acceso inmediato por Google Drive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000; --panel:#0d0d0f; --panel2:#141418; --line:#26262b;
+    --tx:#f5f5f7; --mut:#a1a1aa; --accent:#00e0d1; --accent2:#4de1ff;
+    --radius:16px; --max:1080px;
+    --sans:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .accent{color:var(--accent)}
+  .grad{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  a{color:inherit;text-decoration:none}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(100deg,var(--accent),var(--accent2));color:#001a18;font-weight:800;font-size:1.05rem;padding:16px 34px;border-radius:999px;border:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;box-shadow:0 10px 40px -8px rgba(0,224,209,.5)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 50px -8px rgba(0,224,209,.7)}
+  .btn.big{font-size:1.2rem;padding:20px 44px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-weight:900;font-size:1.15rem;letter-spacing:-.03em;display:flex;align-items:center;gap:9px}
+  .logo .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:inline-block}
+  nav .btn{padding:10px 20px;font-size:.9rem}
+
+  /* HERO */
+  header{position:relative;padding:70px 0 60px;text-align:center;background:radial-gradient(80% 60% at 50% 0%,rgba(0,224,209,.12),transparent 70%)}
+  .pill{display:inline-flex;gap:8px;align-items:center;font-size:.82rem;font-weight:700;color:var(--accent);background:rgba(0,224,209,.08);border:1px solid rgba(0,224,209,.25);padding:7px 16px;border-radius:999px;margin-bottom:22px}
+  header h1{font-size:clamp(2.1rem,6vw,3.6rem);margin-bottom:18px}
+  header p.sub{font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--mut);max-width:640px;margin:0 auto 30px}
+  .cta-note{color:var(--mut);font-size:.85rem;margin-top:14px}
+
+  /* BADGES */
+  .badges{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:46px auto 0;max-width:820px}
+  .badge{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 12px}
+  .badge .n{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:900;line-height:1}
+  .badge .l{color:var(--mut);font-size:.82rem;margin-top:6px}
+
+  section{padding:64px 0}
+  .eyebrow{color:var(--accent);font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+  h2.title{font-size:clamp(1.7rem,4.5vw,2.6rem);margin-bottom:14px}
+  .lead{color:var(--mut);font-size:1.08rem;max-width:640px;margin-bottom:8px}
+
+  /* FEATURE GRID */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .card .ic{font-size:1.6rem;margin-bottom:12px}
+  .card h3{font-size:1.15rem;margin-bottom:8px}
+  .card p{color:var(--mut);font-size:.95rem}
+
+  /* EFFECTS chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-weight:700;font-size:.92rem}
+  .chip::before{content:"▶";color:var(--accent);font-size:.72rem;margin-right:8px}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative}
+  .step .num{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#001a18;font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .step h3{font-size:1.1rem;margin-bottom:8px}
+  .step p{color:var(--mut);font-size:.94rem}
+
+  /* CONTENT accordion */
+  .acc{margin-top:34px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
+  details{border-bottom:1px solid var(--line)}
+  details:last-child{border-bottom:none}
+  summary{cursor:pointer;list-style:none;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1.05rem;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary .meta{color:var(--mut);font-weight:600;font-size:.85rem;flex-shrink:0}
+  summary::after{content:"+";color:var(--accent);font-size:1.5rem;font-weight:400;flex-shrink:0}
+  details[open] summary::after{content:"–"}
+  .acc-body{padding:0 24px 22px;color:var(--mut);font-size:.95rem}
+  .acc-body ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+  .acc-body li{padding-left:18px;position:relative}
+  .acc-body li::before{content:"›";position:absolute;left:0;color:var(--accent)}
+
+  /* GUARANTEE */
+  .guar{background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:24px;padding:44px;text-align:center;max-width:760px;margin:0 auto}
+  .guar .shield{font-size:3rem;margin-bottom:12px}
+
+  /* PRICE */
+  .price-card{background:linear-gradient(160deg,var(--panel2),#000);border:1px solid var(--accent);border-radius:24px;padding:44px 34px;text-align:center;max-width:520px;margin:38px auto 0;box-shadow:0 0 60px -20px rgba(0,224,209,.5)}
+  .price-old{color:var(--mut);text-decoration:line-through;font-size:1.2rem}
+  .price-now{font-size:3.4rem;font-weight:900;line-height:1;margin:6px 0 4px}
+  .price-list{list-style:none;text-align:left;margin:26px 0;display:grid;gap:11px}
+  .price-list li{padding-left:30px;position:relative;color:var(--tx)}
+  .price-list li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}
+
+  /* FAQ reuse acc */
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--mut);font-size:.85rem}
+  .disc{color:#6b6b73;font-size:.75rem;max-width:720px;margin:16px auto 0;line-height:1.5}
+
+  @media(max-width:820px){
+    .badges{grid-template-columns:repeat(2,1fr)}
+    .grid,.steps{grid-template-columns:1fr}
+    .acc-body ul{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="mark"></span>UTEC · CapCut PRO</div>
+    <a href="#comprar" class="btn">Quiero el curso</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="pill">🎬 Curso Editor CapCut PRO · Celular + PC</div>
+    <h1>Dejá de ver tutoriales sueltos.<br><span class="grad">Editá como los virales</span> en CapCut.</h1>
+    <p class="sub">192 clases en video, de cero absoluto a avanzado. Los efectos que buscás por nombre, explicados uno por uno — para celular <b>y</b> para PC.</p>
+    <a href="#comprar" class="btn big">Empezar hoy mismo →</a>
+    <div class="cta-note">Acceso inmediato por Google Drive · Se descarga y es tuyo para siempre</div>
+
+    <div class="badges">
+      <div class="badge"><div class="n">192</div><div class="l">clases en video</div></div>
+      <div class="badge"><div class="n">11.27<span style="font-size:.9rem"> GB</span></div><div class="l">de material real</div></div>
+      <div class="badge"><div class="n">6</div><div class="l">bloques de 0 a experto</div></div>
+      <div class="badge"><div class="n">+32</div><div class="l">clases de bono</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- QUE INCLUYE -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Qué vas a tener</div>
+    <h2 class="title">Todo lo que necesitás para editar como pro</h2>
+    <p class="lead">Un solo paquete, dos rutas paralelas: aprendé en el celular y en la PC, cada una con sus clases propias.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">📱</div><h3>Ruta Celular</h3><p>39 clases desde la interfaz hasta hacks avanzados: máscaras, croma, keyframes, texto detrás de persona y más.</p></div>
+      <div class="card"><div class="ic">💻</div><h3>Ruta PC</h3><p>33 clases del curso base + 33 tutoriales avanzados: animación tipo After Effects, subtítulos fluidos, documentales estilo VOX.</p></div>
+      <div class="card"><div class="ic">🔥</div><h3>87 efectos virales</h3><p>Un video por efecto. Buscás el que querés hacer y lo hacés — sin dar vueltas.</p></div>
+      <div class="card"><div class="ic">🎁</div><h3>Bono Viral Cinematics</h3><p>32 clases de regalo: mentalidad, grabación con iPhone, algoritmo, estrategia de contenido y monetización.</p></div>
+      <div class="card"><div class="ic">📄</div><h3>PDF de apoyo</h3><p>4 documentos descargables para acompañar las clases y no perderte.</p></div>
+      <div class="card"><div class="ic">♾️</div><h3>Acceso de por vida</h3><p>Se descarga desde Google Drive. Lo guardás en tu disco y es tuyo para siempre.</p></div>
+    </div>
+
+    <div class="chips">
+      <span class="chip">Efecto Clon</span>
+      <span class="chip">Speed Ramping</span>
+      <span class="chip">Croma / Pantalla verde</span>
+      <span class="chip">Match Cut</span>
+      <span class="chip">Freeze Frame</span>
+      <span class="chip">Dolly Zoom</span>
+      <span class="chip">Efecto Splash</span>
+      <span class="chip">Mirror Effect</span>
+      <span class="chip">Texto detrás de persona</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section style="background:var(--panel)">
+  <div class="wrap">
+    <div class="eyebrow">Cómo funciona</div>
+    <h2 class="title">Del pago a tu primera edición, hoy</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Confirmás el pago</h3><p>Apenas se confirma, te llega el acceso a la carpeta de Google Drive con todo el material.</p></div>
+      <div class="step"><div class="num">2</div><h3>Entrás y descargás</h3><p>192 clases organizadas en 6 bloques. Elegís la ruta celular o PC y arrancás por donde quieras.</p></div>
+      <div class="step"><div class="num">3</div><h3>Editás como los virales</h3><p>Seguís las clases, replicás los efectos por nombre y sacás tu primer video pro el mismo día.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDO COMPLETO -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Contenido completo</div>
+    <h2 class="title">Bloque por bloque, sin relleno</h2>
+    <p class="lead">Cada número acá fue contado archivo por archivo. Lo que ves es lo que hay.</p>
+    <div class="acc">
+      <details open>
+        <summary><span>1 · Curso de 0 a Experto</span><span class="meta">72 clases</span></summary>
+        <div class="acc-body">
+          <p style="margin-bottom:12px">La columna vertebral. Dos rutas paralelas — PC (33 clases, 7 módulos) y Celular (39 clases, 4 módulos): interfaz, cortes, transiciones, efectos, texto, color grading y exportación.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span>2 · Edición Avanzada y Viral</span><span class="meta">87 clases</span></summary>
+        <div class="acc-body">
+          <ul>
+            <li>Speed Ramping</li><li>Efecto Clon / Multiclones</li>
+            <li>Pantalla verde / Croma</li><li>Match Cut</li>
+            <li>Freeze Frame</li><li>Dolly Zoom</li>
+            <li>Liquid / Splash</li><li>Mirror Effect</li>
+            <li>Texto dentro de video</li><li>Transiciones manuales</li>
+          </ul>
+          <p style="margin-top:12px">54 tutoriales en celular + 33 en PC. Un efecto por clase.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span>3 · Bono — Curso Viral Cinematics</span><span class="meta">32 clases</span></summary>
+        <div class="acc-body">
+          <ul>
+            <li>Mentalidad de creador</li><li>Filmmaking con iPhone</li>
+            <li>Algoritmo TikTok / Instagram</li><li>Edición cinematográfica</li>
+            <li>Estrategia de contenido</li><li>Monetización</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary><span>Extra · Método funciones PRO + Recursos</span><span class="meta">guía + video</span></summary>
+        <div class="acc-body">
+          <p>Guía y video con el método para usar las funciones PRO de CapCut, más un PDF de recursos de edición. (Es material de apoyo con instrucciones, no un instalador.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section style="background:var(--panel)">
+  <div class="wrap">
+    <div class="guar">
+      <div class="shield">🛡️</div>
+      <h2 class="title" style="margin-bottom:10px">Garantía de 3 días</h2>
+      <p class="lead" style="margin:0 auto">Si en los primeros 3 días el material no es lo que esperabas, te devolvemos el 100% de tu dinero. El riesgo es nuestro, no tuyo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIO / CTA -->
+<section id="comprar">
+  <div class="wrap" style="text-align:center">
+    <div class="eyebrow">Empezá hoy</div>
+    <h2 class="title">Acceso completo, un solo pago</h2>
+    <div class="price-card">
+      <div class="price-now grad">$9.99 <span style="font-size:1.3rem;color:var(--mut);-webkit-text-fill-color:var(--mut)">USD</span></div>
+      <div style="color:var(--mut)">pago único · acceso de por vida</div>
+      <div style="color:var(--mut);font-size:.9rem;margin-top:10px">💳 Pagás en la moneda de tu país. Stripe convierte automáticamente al cambio del día — en toda Latinoamérica.</div>
+      <ul class="price-list">
+        <li>192 clases en video (celular + PC)</li>
+        <li>87 tutoriales de efectos virales</li>
+        <li>Bono Viral Cinematics — 32 clases</li>
+        <li>4 PDF de apoyo descargables</li>
+        <li>Acceso inmediato por Google Drive</li>
+        <li>Garantía de 3 días sin preguntas</li>
+      </ul>
+      <a href="__LINK_DE_PAGO__" class="btn big" style="width:100%">Quiero mi acceso ahora · $9.99 →</a>
+      <div class="cta-note">Pago seguro con Stripe · Acceso inmediato tras confirmar</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--panel)">
+  <div class="wrap">
+    <div class="eyebrow">Preguntas frecuentes</div>
+    <h2 class="title">Lo que todos preguntan</h2>
+    <div class="acc">
+      <details><summary><span>¿Cómo recibo el curso?</span></summary><div class="acc-body">Apenas confirmás el pago te llega el acceso a la carpeta de Google Drive con las 192 clases. Lo descargás y es tuyo.</div></details>
+      <details><summary><span>¿Sirve para celular y para PC?</span></summary><div class="acc-body">Sí. Hay una ruta de clases para CapCut en celular y otra para CapCut en PC, cada una completa por su lado.</div></details>
+      <details><summary><span>¿Necesito experiencia previa?</span></summary><div class="acc-body">No. Empieza desde cero absoluto (interfaz y primeros cortes) y llega hasta efectos avanzados.</div></details>
+      <details><summary><span>¿El acceso vence?</span></summary><div class="acc-body">No. Descargás el material y lo guardás en tu disco. Es acceso de por vida.</div></details>
+      <details><summary><span>¿En qué moneda pago?</span></summary><div class="acc-body">El precio base es 9.99 USD. Stripe convierte automáticamente a la moneda de tu país al cambio del día, así que pagás en tu moneda local desde cualquier país de Latinoamérica.</div></details>
+      <details><summary><span>¿Hay garantía?</span></summary><div class="acc-body">Sí, 3 días. Si no es lo que esperabas, te devolvemos el 100%.</div></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="justify-content:center;margin-bottom:12px"><span class="mark"></span>UTEC · Curso Editor CapCut PRO</div>
+    <p>© 2026 · Material educativo de edición de video. Acceso por Google Drive.</p>
+    <p class="disc">CapCut es una marca de sus respectivos dueños. Este es un curso educativo independiente sobre cómo usar la aplicación; no está afiliado, patrocinado ni respaldado por CapCut / ByteDance.</p>
+  </div>
+</footer>
+
+</body>
+</html>
