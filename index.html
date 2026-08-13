@@ -141,6 +141,23 @@
   .price-list li{padding-left:30px;position:relative;color:var(--tx)}
   .price-list li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}
 
+  /* IMAGE BAND (full-bleed cinematic) */
+  .band{position:relative;min-height:360px;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.05)}
+  .band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#000 6%,rgba(0,0,0,.72) 42%,rgba(0,0,0,.2) 100%)}
+  .band .wrap{padding:60px 20px}
+  .band .eyebrow{margin-bottom:12px}
+  .band h2{font-size:clamp(1.6rem,4.2vw,2.5rem);max-width:600px;margin-bottom:12px}
+  .band p{color:#d4d4d8;max-width:500px;font-size:1.05rem}
+
+  /* SHOWCASE (image + text) */
+  .showcase{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:8px}
+  .showcase .shot{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);aspect-ratio:3/2;box-shadow:0 24px 60px -24px rgba(0,0,0,.8)}
+  .showcase .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .showcase .sc-list{list-style:none;margin-top:18px;display:grid;gap:10px}
+  .showcase .sc-list li{padding-left:26px;position:relative;color:var(--mut)}
+  .showcase .sc-list li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}
+
   /* FAQ reuse acc */
   footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--mut);font-size:.85rem}
   .disc{color:#6b6b73;font-size:.75rem;max-width:720px;margin:16px auto 0;line-height:1.5}
@@ -153,6 +170,8 @@
     .hero-copy .pill{margin-left:auto;margin-right:auto}
     .device{order:-1}
     .gallery{grid-template-columns:repeat(2,1fr)}
+    .showcase{grid-template-columns:1fr}
+    .band .wrap{padding:48px 20px}
   }
 </style>
 </head>
@@ -235,6 +254,16 @@
   </div>
 </section>
 
+<!-- BANDA CINEMATOGRAFICA -->
+<section class="band" style="padding:0">
+  <img class="bg" src="assets/camera-monitor-recording-closeup.jpg" alt="Monitor de cámara en una grabación de video">
+  <div class="wrap">
+    <div class="eyebrow">De la toma al render</div>
+    <h2>Aprendé el flujo real de los que se hacen virales</h2>
+    <p>No son tips sueltos: es el mismo proceso, paso a paso, para que cada video te salga con acabado profesional.</p>
+  </div>
+</section>
+
 <!-- COMO FUNCIONA -->
 <section style="background:var(--panel)">
   <div class="wrap">
@@ -244,6 +273,25 @@
       <div class="step"><div class="num">1</div><h3>Confirmás el pago</h3><p>Apenas se confirma, te llega el acceso a la carpeta de Google Drive con todo el material.</p></div>
       <div class="step"><div class="num">2</div><h3>Entrás y descargás</h3><p>192 clases organizadas en 6 bloques. Elegís la ruta celular o PC y arrancás por donde quieras.</p></div>
       <div class="step"><div class="num">3</div><h3>Editás como los virales</h3><p>Seguís las clases, replicás los efectos por nombre y sacás tu primer video pro el mismo día.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE CELULAR -->
+<section>
+  <div class="wrap">
+    <div class="showcase">
+      <div class="shot"><img src="assets/filming-phone-night-tunnel.jpg" alt="Grabando video con el celular de noche" loading="lazy"></div>
+      <div>
+        <div class="eyebrow">Todo desde tu celular</div>
+        <h2 class="title" style="margin-bottom:12px">Si tenés un teléfono, tenés un estudio</h2>
+        <p class="lead" style="margin-bottom:0">39 clases de la ruta celular te llevan de la interfaz a los efectos que rompen en TikTok y Reels — sin computador, sin equipo caro.</p>
+        <ul class="sc-list">
+          <li>Croma, máscaras y keyframes en el cel</li>
+          <li>Los efectos virales, uno por uno</li>
+          <li>Subtítulos automáticos y audio en tendencia</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
