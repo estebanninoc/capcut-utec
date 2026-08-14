@@ -60,9 +60,10 @@
   .phone{background:#0a0a0c;border:2px solid #2e2e34;border-radius:42px;padding:11px;position:relative}
   .phone::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:80px;height:6px;border-radius:99px;background:#1c1c21;z-index:3}
   .screen{border-radius:32px;overflow:hidden;background:#000;border:1px solid #1e1e24}
-  .pv{position:relative;aspect-ratio:9/12;background:radial-gradient(120% 75% at 50% 22%,rgba(255,255,255,.16),transparent 62%),linear-gradient(165deg,#1e1e24,#060608);display:flex;align-items:center;justify-content:center}
-  .pv .tag{position:absolute;top:12px;left:12px;font-size:.6rem;font-weight:800;color:#000;background:#fff;padding:4px 10px;border-radius:99px}
-  .pv .rec{position:absolute;top:12px;right:12px;font-size:.58rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:5px}
+  .pv{position:relative;overflow:hidden;aspect-ratio:9/12;background:radial-gradient(120% 75% at 50% 22%,rgba(255,255,255,.16),transparent 62%),linear-gradient(165deg,#1e1e24,#060608);display:flex;align-items:center;justify-content:center}
+  .pv .yt-hero{position:absolute;top:50%;left:50%;width:102%;height:136%;transform:translate(-50%,-50%);border:0;pointer-events:none;z-index:1}
+  .pv .tag{position:absolute;z-index:2;top:12px;left:12px;font-size:.6rem;font-weight:800;color:#000;background:#fff;padding:4px 10px;border-radius:99px}
+  .pv .rec{position:absolute;z-index:2;top:12px;right:12px;font-size:.58rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:5px}
   .pv .rec::before{content:"";width:7px;height:7px;border-radius:50%;background:#ff4d5e;box-shadow:0 0 8px #ff4d5e}
   .pv .play{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);border:1.5px solid rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center}
   .pv .play::after{content:"";border-left:14px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
@@ -239,9 +240,9 @@
         <div class="phone">
           <div class="screen">
             <div class="pv">
-              <span class="tag">Efecto Clon</span>
+              <iframe class="yt-hero" src="https://www.youtube-nocookie.com/embed/ppJfzAA6g5E?autoplay=1&mute=1&loop=1&playlist=ppJfzAA6g5E&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true"></iframe>
+              <span class="tag">Pantalla verde</span>
               <span class="rec">4K · 60fps</span>
-              <div class="play"></div>
             </div>
             <div class="tl">
               <div class="tools"><i></i><i></i><i></i><i></i><i></i></div>
@@ -280,7 +281,7 @@
       <div class="fx g5" data-yt="kTZSUBLboSo"><img class="fx-th" src="https://i.ytimg.com/vi/kTZSUBLboSo/hqdefault.jpg" alt="" loading="lazy"><span>Freeze<br>Frame</span></div>
       <div class="fx g6" data-yt="L47dI4COi0M"><img class="fx-th" src="https://i.ytimg.com/vi/L47dI4COi0M/hqdefault.jpg" alt="" loading="lazy"><span>Dolly<br>Zoom</span></div>
       <div class="fx g7" data-yt="FRSZ6a8cU40"><img class="fx-th" src="https://i.ytimg.com/vi/FRSZ6a8cU40/hqdefault.jpg" alt="" loading="lazy"><span>Efecto<br>Splash</span></div>
-      <div class="fx g8" data-yt="rUseWUmPwak"><img class="fx-th" src="https://i.ytimg.com/vi/rUseWUmPwak/hqdefault.jpg" alt="" loading="lazy"><span>Texto detrás<br>de persona</span></div>
+      <div class="fx g8" data-yt="8xgfihyG2Qc"><img class="fx-th" src="https://i.ytimg.com/vi/8xgfihyG2Qc/hqdefault.jpg" alt="" loading="lazy"><span>Efecto<br>Glitch</span></div>
     </div>
     <p class="fx-note">Así se ven en acción. Y en el pack: hasta 87 efectos, uno por clase, con su nombre, para replicarlos al instante.</p>
   </div>
