@@ -100,7 +100,7 @@
   .card p{color:var(--mut);font-size:.95rem}
 
   /* GALERÍA DE EFECTOS (monocromo CapCut) */
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
   .fx{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid var(--line);display:flex;align-items:flex-end;padding:14px;isolation:isolate;transition:transform .18s ease,border-color .18s}
   .fx .yt-live{position:absolute;top:50%;left:50%;width:101%;height:135%;transform:translate(-50%,-50%);border:0;pointer-events:none;z-index:-1}
   .fx .fx-th{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
@@ -204,7 +204,10 @@
     header p.sub{margin-left:auto;margin-right:auto}
     .cta-row{justify-content:center}
     .device{width:225px;margin-top:4px}
-    .gallery{grid-template-columns:repeat(2,1fr)}
+    .gallery{grid-template-columns:repeat(3,1fr);gap:8px}
+    .fx{padding:9px;border-radius:11px}
+    .fx span{font-size:.68rem}
+    .fx .ply{display:none}
     .showcase{grid-template-columns:1fr}
     .band .wrap{padding:48px 20px}
     .buybar{display:flex}
@@ -277,9 +280,7 @@
       <div class="fx g1" data-yt="7AyibBh_-m0"><img class="fx-th" src="https://i.ytimg.com/vi/7AyibBh_-m0/hqdefault.jpg" alt="" loading="lazy"><span>Efecto<br>Clon</span></div>
       <div class="fx g2" data-yt="lHMVLEV--Pk"><img class="fx-th" src="https://i.ytimg.com/vi/lHMVLEV--Pk/hqdefault.jpg" alt="" loading="lazy"><span>Speed<br>Ramping</span></div>
       <div class="fx g3" data-yt="ppJfzAA6g5E"><img class="fx-th" src="https://i.ytimg.com/vi/ppJfzAA6g5E/hqdefault.jpg" alt="" loading="lazy"><span>Croma /<br>Pantalla verde</span></div>
-      <div class="fx g4" data-yt="b-8OEjTJZZ8"><img class="fx-th" src="https://i.ytimg.com/vi/b-8OEjTJZZ8/hqdefault.jpg" alt="" loading="lazy"><span>Match<br>Cut</span></div>
-      <div class="fx g5" data-yt="kTZSUBLboSo"><img class="fx-th" src="https://i.ytimg.com/vi/kTZSUBLboSo/hqdefault.jpg" alt="" loading="lazy"><span>Freeze<br>Frame</span></div>
-      <div class="fx g6" data-yt="L47dI4COi0M"><img class="fx-th" src="https://i.ytimg.com/vi/L47dI4COi0M/hqdefault.jpg" alt="" loading="lazy"><span>Dolly<br>Zoom</span></div>
+                  <div class="fx g6" data-yt="L47dI4COi0M"><img class="fx-th" src="https://i.ytimg.com/vi/L47dI4COi0M/hqdefault.jpg" alt="" loading="lazy"><span>Dolly<br>Zoom</span></div>
       <div class="fx g7" data-yt="FRSZ6a8cU40"><img class="fx-th" src="https://i.ytimg.com/vi/FRSZ6a8cU40/hqdefault.jpg" alt="" loading="lazy"><span>Efecto<br>Splash</span></div>
       <div class="fx g8" data-yt="8xgfihyG2Qc"><img class="fx-th" src="https://i.ytimg.com/vi/8xgfihyG2Qc/hqdefault.jpg" alt="" loading="lazy"><span>Efecto<br>Glitch</span></div>
     </div>
