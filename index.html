@@ -102,6 +102,15 @@
   .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
   .fx{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid var(--line);display:flex;align-items:flex-end;padding:14px;isolation:isolate;transition:transform .18s ease,border-color .18s}
   .fx:hover{transform:translateY(-4px);border-color:#5a5a63}
+  .fx{cursor:pointer}
+  .fx .fx-th{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  /* MODAL VIDEO */
+  #yt-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.93);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+  #yt-modal.abierto{display:flex}
+  .yt-caja{position:relative}
+  .yt-marco{aspect-ratio:9/16;width:min(92vw,calc(80vh * 9 / 16));border-radius:18px;overflow:hidden;border:1px solid #3a3a40;background:#000}
+  .yt-marco iframe{width:100%;height:100%;border:0;display:block}
+  #yt-cerrar{position:absolute;top:-44px;right:0;background:#fff;color:#000;border:none;border-radius:99px;width:34px;height:34px;font-size:15px;font-weight:900;cursor:pointer}
   .fx::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--g)}
   .fx::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(90% 60% at 30% 18%,rgba(255,255,255,.20),transparent 55%),linear-gradient(180deg,transparent 30%,rgba(0,0,0,.78))}
   .fx .ply{position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.4);border:1.5px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center}
@@ -272,16 +281,16 @@
     <h2 class="title">Los efectos que ves en TikTok, uno por uno</h2>
     <p class="lead">El curso base te lleva de 0 a experto en <b>celular y PC</b>. Y con el Pack de Efectos replicas los virales buscándolos por nombre:</p>
     <div class="gallery">
-      <div class="fx g1"><div class="ply"></div><span>Efecto<br>Clon</span></div>
-      <div class="fx g2"><div class="ply"></div><span>Speed<br>Ramping</span></div>
-      <div class="fx g3"><div class="ply"></div><span>Croma /<br>Pantalla verde</span></div>
-      <div class="fx g4"><div class="ply"></div><span>Match<br>Cut</span></div>
-      <div class="fx g5"><div class="ply"></div><span>Freeze<br>Frame</span></div>
-      <div class="fx g6"><div class="ply"></div><span>Dolly<br>Zoom</span></div>
-      <div class="fx g7"><div class="ply"></div><span>Efecto<br>Splash</span></div>
-      <div class="fx g8"><div class="ply"></div><span>Texto detrás<br>de persona</span></div>
+      <div class="fx g1" data-yt="7AyibBh_-m0"><img class="fx-th" src="https://i.ytimg.com/vi/7AyibBh_-m0/hqdefault.jpg" alt="" loading="lazy"><div class="ply"></div><span>Efecto<br>Clon</span></div>
+      <div class="fx g2" data-yt="lHMVLEV--Pk"><img class="fx-th" src="https://i.ytimg.com/vi/lHMVLEV--Pk/hqdefault.jpg" alt="" loading="lazy"><div class="ply"></div><span>Speed<br>Ramping</span></div>
+      <div class="fx g3" data-yt="ppJfzAA6g5E"><img class="fx-th" src="https://i.ytimg.com/vi/ppJfzAA6g5E/hqdefault.jpg" alt="" loading="lazy"><div class="ply"></div><span>Croma /<br>Pantalla verde</span></div>
+      <div class="fx g4" data-yt="b-8OEjTJZZ8"><img class="fx-th" src="https://i.ytimg.com/vi/b-8OEjTJZZ8/hqdefault.jpg" alt="" loading="lazy"><div class="ply"></div><span>Match<br>Cut</span></div>
+      <div class="fx g5" data-yt="kTZSUBLboSo"><img class="fx-th" src="https://i.ytimg.com/vi/kTZSUBLboSo/hqdefault.jpg" alt="" loading="lazy"><div class="ply"></div><span>Freeze<br>Frame</span></div>
+      <div class="fx g6" data-yt="L47dI4COi0M"><img class="fx-th" src="https://i.ytimg.com/vi/L47dI4COi0M/hqdefault.jpg" alt="" loading="lazy"><div class="ply"></div><span>Dolly<br>Zoom</span></div>
+      <div class="fx g7" data-yt="FRSZ6a8cU40"><img class="fx-th" src="https://i.ytimg.com/vi/FRSZ6a8cU40/hqdefault.jpg" alt="" loading="lazy"><div class="ply"></div><span>Efecto<br>Splash</span></div>
+      <div class="fx g8" data-yt="B_dvKDkuKMg"><img class="fx-th" src="https://i.ytimg.com/vi/B_dvKDkuKMg/hqdefault.jpg" alt="" loading="lazy"><div class="ply"></div><span>Texto detrás<br>de persona</span></div>
     </div>
-    <p class="fx-note">…y así hasta 87 efectos: uno por clase, con su nombre, para encontrarlo y replicarlo al instante.</p>
+    <p class="fx-note">▶ Toca cualquier efecto para ver un ejemplo real… y así hasta 87: uno por clase, con su nombre, para replicarlo al instante.</p>
   </div>
 </section>
 
@@ -352,13 +361,13 @@
           <input type="checkbox">
           <span class="bx"></span>
           <span class="bt">🔥 <b>Pack 87 Efectos Virales</b><small>87 tutoriales, un efecto por clase (6.95 GB)</small></span>
-          <span class="bp">+$6</span>
+          <span class="bp">+$5.99</span>
         </label>
         <label class="bump" id="bump-cin">
           <input type="checkbox">
           <span class="bx"></span>
           <span class="bt">🎁 <b>Viral Cinematics</b><small>32 clases: algoritmo, estrategia y monetización</small></span>
-          <span class="bp">+$5</span>
+          <span class="bp">+$4.99</span>
         </label>
         <div class="bump-nota" id="bump-nota">Marca los dos y te llevas <b>TODO (192 clases) por $16.99</b>: ahorras casi $4</div>
       </div>
@@ -404,6 +413,24 @@
   </div>
 </footer>
 
+<!-- MODAL VIDEO EFECTO -->
+<div id="yt-modal"><div class="yt-caja"><button id="yt-cerrar" aria-label="Cerrar">✕</button><div class="yt-marco"><iframe id="yt-frame" src="about:blank" title="Ejemplo del efecto" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div></div>
+<script>
+  (function(){
+    var modal=document.getElementById('yt-modal'),frame=document.getElementById('yt-frame');
+    document.querySelectorAll('.fx[data-yt]').forEach(function(c){
+      c.addEventListener('click',function(){
+        frame.src='https://www.youtube-nocookie.com/embed/'+c.dataset.yt+'?autoplay=1&playsinline=1&rel=0&modestbranding=1';
+        modal.classList.add('abierto');
+      });
+    });
+    function cerrar(){ modal.classList.remove('abierto'); frame.src='about:blank'; }
+    document.getElementById('yt-cerrar').addEventListener('click',cerrar);
+    modal.addEventListener('click',function(e){ if(e.target===modal) cerrar(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') cerrar(); });
+  })();
+</script>
+
 <!-- BARRA FIJA MÓVIL -->
 <div class="buybar" id="buybar">
   <div class="p"><span id="buybar-precio">$9.99</span> <small>pago único · acceso de por vida</small></div>
@@ -422,8 +449,8 @@
 
 <script>
   (function(){
-    var LK={base:'https://buy.stripe.com/7sYcN52rI97mcvO9q37kc0a',fx:'https://buy.stripe.com/5kQ00j3vM83i2Vebyb7kc0b',cin:'https://buy.stripe.com/8x2aEX0jA2IY67q31F7kc0c',todo:'https://buy.stripe.com/bJe28r0jAgzOfI0gSv7kc0d'};
-    var PR={base:'9.99',fx:'15.99',cin:'14.99',todo:'16.99'};
+    var LK={base:'https://buy.stripe.com/7sYcN52rI97mcvO9q37kc0a',fx:'https://buy.stripe.com/3cI00j9UadnC8fyeKn7kc0e',cin:'https://buy.stripe.com/9B63cv6HYerG9jC1XB7kc0f',todo:'https://buy.stripe.com/bJe28r0jAgzOfI0gSv7kc0d'};
+    var PR={base:'9.99',fx:'15.98',cin:'14.98',todo:'16.99'};
     var fx=document.querySelector('#bump-fx input'),cin=document.querySelector('#bump-cin input');
     var btn=document.getElementById('btn-pago'),big=document.getElementById('precio-grande'),nota=document.getElementById('bump-nota');
     function up(){
