@@ -425,21 +425,10 @@
     }
     if (lento) return; /* internet lento o ahorro de datos: solo miniaturas, cero video */
 
-    /* galeria: los 6 players juntos, precargados 600px antes de llegar */
-    var galeria = document.querySelector('.gallery');
-    function encenderTodos(){
-      document.querySelectorAll('.fx[data-yt]').forEach(function(c){
-        if (!c.querySelector('.yt-live')) crear(c, c.dataset.yt, 'yt-live');
-      });
-    }
-    if ('IntersectionObserver' in window && galeria) {
-      var io = new IntersectionObserver(function(es){
-        if (es.some(function(e){ return e.isIntersecting })) { encenderTodos(); io.disconnect(); }
-      }, {rootMargin:'600px 0px'});
-      io.observe(galeria);
-    } else {
-      encenderTodos();
-    }
+    /* galeria: los 6 players arrancan apenas abre la pagina */
+    document.querySelectorAll('.fx[data-yt]').forEach(function(c){
+      if (!c.querySelector('.yt-live')) crear(c, c.dataset.yt, 'yt-live');
+    });
 
     /* hero: arranca despues de que cargue lo critico */
     window.addEventListener('load', function(){
