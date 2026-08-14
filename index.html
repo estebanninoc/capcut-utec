@@ -240,7 +240,7 @@
         <div class="phone">
           <div class="screen">
             <div class="pv">
-              <iframe class="yt-hero" src="https://www.youtube-nocookie.com/embed/ppJfzAA6g5E?autoplay=1&mute=1&loop=1&playlist=ppJfzAA6g5E&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true"></iframe>
+              <iframe class="yt-hero" id="yt-hero" src="https://www.youtube-nocookie.com/embed/thaP4pR_3oQ?autoplay=1&mute=1&loop=1&playlist=thaP4pR_3oQ&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true"></iframe>
               <span class="tag">Pantalla verde</span>
               <span class="rec">4K · 60fps</span>
             </div>
@@ -408,6 +408,13 @@
 
 <script>
   (function(){
+    // empujar el play del hero (algunos navegadores dejan el player cargando)
+    var hero=document.getElementById('yt-hero'), intentos=0;
+    var ht=setInterval(function(){
+      intentos++;
+      try{ hero.contentWindow.postMessage(JSON.stringify({event:'command',func:'playVideo',args:[]}),'*'); }catch(e){}
+      if(intentos>15) clearInterval(ht);
+    },1000);
     function encender(card){
       if(card.querySelector('.yt-live')) return;
       var id = card.dataset.yt;
