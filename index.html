@@ -237,7 +237,7 @@
         <h1>Deja de ver tutoriales sueltos.<br>Edita <span class="cut">como los virales</span> en CapCut.</h1>
         <p class="sub"><b>Hasta 192 clases en video</b>, de cero absoluto a avanzado. Los efectos que buscas por nombre, explicados uno por uno: para celular <b>y</b> para PC.</p>
         <div class="cta-row">
-          <a href="#comprar" class="btn big">Empezar hoy · $9.99 →</a>
+          <a href="#comprar" class="btn big" id="btn-hero">Empezar hoy · $9.99 →</a>
         </div>
         <div class="cta-note">Pago único · Acceso inmediato · Es tuyo para siempre</div>
       </div>
@@ -358,13 +358,13 @@
           <input type="checkbox">
           <span class="bx"></span>
           <span class="bt">🔥 <b>Pack 87 Efectos Virales</b><small>87 tutoriales, un efecto por clase (6.95 GB)</small></span>
-          <span class="bp">+$5.99</span>
+          <span class="bp" id="bp-fx">+$5.99</span>
         </label>
         <label class="bump" id="bump-cin">
           <input type="checkbox">
           <span class="bx"></span>
           <span class="bt">🎁 <b>Viral Cinematics</b><small>32 clases: algoritmo, estrategia y monetización</small></span>
-          <span class="bp">+$4.99</span>
+          <span class="bp" id="bp-cin">+$4.99</span>
         </label>
         <div class="bump-nota" id="bump-nota">Marca los dos y te llevas <b>TODO (192 clases) por $16.99</b>: ahorras casi $4</div>
       </div>
@@ -464,23 +464,53 @@
 
 <script>
   (function(){
-    var LK={base:'https://buy.stripe.com/7sY8wO5bocIZaiVfyOdwc00',fx:'https://buy.stripe.com/28EbJ0eLY4ctezbeuKdwc01',cin:'https://buy.stripe.com/3cI3cudHUeR79eR0DUdwc02',todo:'https://buy.stripe.com/00w5kC1ZccIZ9eR9aqdwc03'};
+    /* checkout siempre en espanol */
+    var LK={base:'https://buy.stripe.com/7sY8wO5bocIZaiVfyOdwc00?locale=es',fx:'https://buy.stripe.com/28EbJ0eLY4ctezbeuKdwc01?locale=es',cin:'https://buy.stripe.com/3cI3cudHUeR79eR0DUdwc02?locale=es',todo:'https://buy.stripe.com/00w5kC1ZccIZ9eR9aqdwc03?locale=es'};
     var PR={base:'9.99',fx:'15.98',cin:'14.98',todo:'16.99'};
+
+    /* ── MONEDA LOCAL: copia EXACTA de currency_options en Stripe ──
+       Si se cambia un precio en Stripe hay que cambiarlo AQUI tambien. */
+    var TAB={"COP":{"9.99":33900,"15.98":54300,"14.98":50900,"16.99":57700},"MXN":{"9.99":179,"15.98":287,"14.98":269,"16.99":305},"BRL":{"9.99":53.99,"15.98":86.4,"14.98":81.0,"16.99":91.9},"PEN":{"9.99":35.99,"15.98":57.6,"14.98":54.0,"16.99":61.3},"CLP":{"9.99":9900,"15.98":15900,"14.98":14900,"16.99":16900},"ARS":{"9.99":16900,"15.98":27100,"14.98":25400,"16.99":28800},"UYU":{"9.99":429,"15.98":687,"14.98":644,"16.99":730},"GTQ":{"9.99":79.99,"15.98":128,"14.98":120,"16.99":137},"HNL":{"9.99":289,"15.98":463,"14.98":434,"16.99":492},"NIO":{"9.99":389,"15.98":623,"14.98":584,"16.99":662},"CRC":{"9.99":4749,"15.98":7600,"14.98":7130,"16.99":8080},"DOP":{"9.99":609,"15.98":975,"14.98":914,"16.99":1040},"PYG":{"9.99":62900,"15.98":100700,"14.98":94400,"16.99":107000},"BOB":{"9.99":129,"15.98":207,"14.98":194,"16.99":220}};
+    var TZ2CC={"America/Bogota":"CO","America/Mexico_City":"MX","America/Cancun":"MX","America/Merida":"MX","America/Monterrey":"MX","America/Matamoros":"MX","America/Chihuahua":"MX","America/Ciudad_Juarez":"MX","America/Ojinaga":"MX","America/Hermosillo":"MX","America/Mazatlan":"MX","America/Bahia_Banderas":"MX","America/Tijuana":"MX","America/Lima":"PE","America/Santiago":"CL","America/Punta_Arenas":"CL","Pacific/Easter":"CL","America/Guatemala":"GT","America/Tegucigalpa":"HN","America/Managua":"NI","America/Costa_Rica":"CR","America/Santo_Domingo":"DO","America/Asuncion":"PY","America/Montevideo":"UY","America/La_Paz":"BO","America/Buenos_Aires":"AR","America/Cordoba":"AR","America/Mendoza":"AR","America/Rosario":"AR","America/Catamarca":"AR","America/Jujuy":"AR","America/Sao_Paulo":"BR","America/Bahia":"BR","America/Fortaleza":"BR","America/Recife":"BR","America/Belem":"BR","America/Manaus":"BR","America/Cuiaba":"BR","America/Campo_Grande":"BR","America/Porto_Velho":"BR","America/Boa_Vista":"BR","America/Rio_Branco":"BR","America/Maceio":"BR","America/Araguaina":"BR","America/Santarem":"BR","America/Eirunepe":"BR","America/Noronha":"BR","America/Sao_Luis":"BR"};
+    var MONEDAS={CO:"COP",MX:"MXN",PE:"PEN",CL:"CLP",AR:"ARS",BR:"BRL",GT:"GTQ",HN:"HNL",NI:"NIO",CR:"CRC",DO:"DOP",PY:"PYG",UY:"UYU",BO:"BOB"};
+    var SIM={COP:"$",MXN:"$",ARS:"$",CLP:"$",UYU:"$",DOP:"RD$",PEN:"S/",BRL:"R$",GTQ:"Q",HNL:"L",NIO:"C$",CRC:"\u20a1",PYG:"\u20b2",BOB:"Bs"};
+    var LOC={COP:"es-CO",MXN:"es-MX",ARS:"es-AR",CLP:"es-CL",PEN:"es-PE",UYU:"es-UY",BOB:"es-BO",PYG:"es-PY",GTQ:"es-GT",HNL:"es-HN",NIO:"es-NI",CRC:"es-CR",DOP:"es-DO",BRL:"pt-BR"};
+    var MON=null;
+    try{
+      var tz=(Intl.DateTimeFormat().resolvedOptions().timeZone)||"";
+      var cc=TZ2CC[tz]; var cur=cc?MONEDAS[cc]:null;
+      if(cur&&TAB[cur]) MON={cur:cur,t:TAB[cur]};
+    }catch(e){}
+    function fnum(n){
+      var dec=(n%1!==0)?2:0;
+      return SIM[MON.cur]+n.toLocaleString(LOC[MON.cur]||"es",{minimumFractionDigits:dec,maximumFractionDigits:dec})+" "+MON.cur;
+    }
+    function precio(k){ return MON?fnum(MON.t[PR[k]]):"$"+PR[k]; }
+
     var fx=document.querySelector('#bump-fx input'),cin=document.querySelector('#bump-cin input');
     var btn=document.getElementById('btn-pago'),big=document.getElementById('precio-grande'),nota=document.getElementById('bump-nota');
     function up(){
       var k = fx.checked&&cin.checked ? 'todo' : fx.checked ? 'fx' : cin.checked ? 'cin' : 'base';
       btn.href=LK[k];
-      btn.textContent='Quiero mi acceso ahora · $'+PR[k]+' →';
-      big.innerHTML='$'+PR[k]+' <span style="font-size:1.3rem;color:var(--mut)">USD</span>';
-      var bb=document.getElementById('buybar-precio'); if(bb) bb.textContent='$'+PR[k];
+      var p=precio(k);
+      btn.textContent='Quiero mi acceso ahora · '+p+' →';
+      big.innerHTML= MON ? p : '$'+PR[k]+' <span style="font-size:1.3rem;color:var(--mut)">USD</span>';
+      var bb=document.getElementById('buybar-precio'); if(bb) bb.textContent=p;
       document.getElementById('bump-fx').classList.toggle('on',fx.checked);
       document.getElementById('bump-cin').classList.toggle('on',cin.checked);
+      var pTodo = MON?fnum(MON.t['16.99']):'$16.99';
+      var ah = MON?('ahorras '+fnum(Math.round((MON.t['15.98']+MON.t['14.98']-MON.t['9.99']-MON.t['16.99'])*100)/100)):'ahorras casi $4';
       nota.innerHTML = (k==='todo')
-        ? '🎉 Te llevas <b>TODO: las 192 clases por $16.99</b> (ahorras casi $4)'
-        : 'Marca los dos y te llevas <b>TODO (192 clases) por $16.99</b>: ahorras casi $4';
+        ? '\ud83c\udf89 Te llevas <b>TODO: las 192 clases por '+pTodo+'</b> ('+ah+')'
+        : 'Marca los dos y te llevas <b>TODO (192 clases) por '+pTodo+'</b>: '+ah;
+    }
+    if(MON){
+      var h=document.getElementById('btn-hero'); if(h) h.textContent='Empezar hoy · '+precio('base')+' \u2192';
+      var bf=document.getElementById('bp-fx'); if(bf) bf.textContent='+'+fnum(Math.round((MON.t['15.98']-MON.t['9.99'])*100)/100);
+      var bc=document.getElementById('bp-cin'); if(bc) bc.textContent='+'+fnum(Math.round((MON.t['14.98']-MON.t['9.99'])*100)/100);
     }
     fx.addEventListener('change',up); cin.addEventListener('change',up);
+    up();
   })();
 </script>
 </body>
