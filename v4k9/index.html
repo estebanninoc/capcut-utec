@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Tu acceso · Curso Editor CapCut PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000; --panel:#101012; --panel2:#17171a; --line:#28282d;
+    --tx:#ffffff; --mut:#9a9aa3; --dim:#6e6e77; --radius:16px; --max:900px;
+    --disp:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:var(--disp);font-weight:900;letter-spacing:-.035em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:#fff;color:#000}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:900;font-size:1.18rem;letter-spacing:-.04em}
+  .logo .mark{width:30px;height:30px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .logo .mark img{width:19px;height:19px;display:block}
+  .logo .sub{font-weight:700;font-size:.72rem;letter-spacing:.14em;color:var(--mut);text-transform:uppercase;margin-left:2px;align-self:flex-end;padding-bottom:2px}
+  .navtag{font-size:.78rem;font-weight:700;color:#0f0;background:rgba(0,255,100,.08);border:1px solid rgba(0,255,100,.25);border-radius:999px;padding:6px 14px}
+
+  header{padding:56px 0 34px;text-align:center;background:radial-gradient(85% 60% at 50% 0%,rgba(255,255,255,.07),transparent 70%)}
+  header h1{font-size:clamp(1.9rem,5.5vw,3rem);margin-bottom:12px}
+  header p{color:var(--mut);max-width:560px;margin:0 auto;font-size:1.05rem}
+  header p b{color:#fff}
+
+  section{padding:26px 0}
+  .eyebrow{color:var(--mut);font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;margin-bottom:14px}
+
+  /* pasos de inicio */
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .paso{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .paso .n{width:30px;height:30px;border-radius:50%;background:#fff;color:#000;font-family:var(--disp);font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:.95rem}
+  .paso b{display:block;margin-bottom:4px;font-size:.95rem}
+  .paso p{color:var(--mut);font-size:.86rem}
+
+  /* avisos */
+  .avisos{display:grid;gap:10px}
+  .aviso{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-left:3px solid #fff;border-radius:12px;padding:14px 16px;font-size:.92rem;color:var(--mut)}
+  .aviso b{color:#fff}
+  .aviso .ic{font-size:1.2rem;flex-shrink:0}
+
+  /* bloques del curso */
+  .bloque{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:14px;transition:border-color .2s}
+  .bloque:hover{border-color:#4a4a52}
+  .bloque .fila{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .bloque .info{flex:1;min-width:230px}
+  .bloque .kicker{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+  .bloque h3{font-size:1.2rem;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .bloque .tag{font-size:.66rem;font-weight:800;background:#fff;color:#000;border-radius:99px;padding:3px 10px;letter-spacing:.04em}
+  .bloque p{color:var(--mut);font-size:.92rem}
+  .bloque p b{color:#fff}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#000;font-family:var(--disp);font-weight:800;font-size:.98rem;padding:13px 28px;border-radius:999px;border:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;box-shadow:0 8px 34px -10px rgba(255,255,255,.3);white-space:nowrap}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 44px -10px rgba(255,255,255,.45)}
+  .btn.sec{background:transparent;color:#fff;border:1.5px solid #3a3a40;box-shadow:none}
+  .btn.sec:hover{border-color:#fff}
+  .detalle{margin-top:12px;border-top:1px solid var(--line);padding-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:4px 22px}
+  .detalle li{list-style:none;color:var(--mut);font-size:.86rem;padding-left:16px;position:relative}
+  .detalle li::before{content:"›";position:absolute;left:0;color:#fff}
+
+  /* soporte */
+  .soporte{background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:30px;text-align:center}
+  .soporte h2{font-size:1.4rem;margin-bottom:8px}
+  .soporte p{color:var(--mut);font-size:.95rem;margin-bottom:16px}
+
+  /* faq */
+  .acc{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
+  details{border-bottom:1px solid var(--line)}
+  details:last-child{border-bottom:none}
+  summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.98rem;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:#fff;font-size:1.4rem;font-weight:300;flex-shrink:0}
+  details[open] summary::after{content:"–"}
+  .acc-body{padding:0 20px 18px;color:var(--mut);font-size:.92rem}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--mut);font-size:.85rem;margin-top:30px}
+  .disc{color:#5c5c64;font-size:.74rem;max-width:680px;margin:14px auto 0;line-height:1.5}
+
+  @media(max-width:700px){
+    .pasos{grid-template-columns:1fr}
+    .detalle{grid-template-columns:1fr}
+    .bloque .fila{flex-direction:column;align-items:stretch}
+    .btn{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <span class="mark"><img src="../assets/capcut-icon.png" alt="CapCut" width="19" height="19"></span>
+      CapCut<span class="sub">PRO</span>
+    </div>
+    <span class="navtag">✓ Acceso activo</span>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <h1>🎬 Bienvenido a tu curso</h1>
+    <p>Todo tu material está aquí, <b>organizado y descargable para siempre</b>. Sigue los 3 pasos y en minutos estás editando.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Empieza así</div>
+    <div class="pasos">
+      <div class="paso"><div class="n">1</div><b>Instala CapCut</b><p>Abre la carpeta de instalación (celular o PC) y sigue las instrucciones que están adentro.</p></div>
+      <div class="paso"><div class="n">2</div><b>Entra al Bloque 1</b><p>Curso de 0 a Experto. Elige tu ruta (celular o PC) y ve en el orden de las carpetas.</p></div>
+      <div class="paso"><div class="n">3</div><b>Descarga y aprende</b><p>Descarga cada video antes de verlo y practica cada técnica en tu propio clip.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Importante antes de empezar</div>
+    <div class="avisos">
+      <div class="aviso"><span class="ic">⬇️</span><span><b>Descarga los videos antes de verlos.</b> Toca el botón de descarga (arriba a la derecha en Drive). Son clases largas y pesadas: en línea no siempre reproducen bien.</span></div>
+      <div class="aviso"><span class="ic">💻</span><span><b>¿Un archivo no abre en el celular?</b> Ábrelo en el computador. Los archivos grandes a veces no cargan en el teléfono.</span></div>
+      <div class="aviso"><span class="ic">♾️</span><span><b>Todo es tuyo para siempre.</b> Descárgalo y guárdalo en tu equipo o en un disco: el acceso no se vence.</span></div>
+      <div class="aviso"><span class="ic">🔓</span><span><b>Si al abrir te pide permiso,</b> toca "Abrir" o "Solicitar acceso" con el mismo correo con el que compraste.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Tu curso · bloque por bloque</div>
+
+    <div class="bloque">
+      <div class="fila">
+        <div class="info">
+          <div class="kicker">Bloque 1 · 72 clases</div>
+          <h3>🎥 Curso de 0 a Experto <span class="tag">EMPIEZA AQUÍ</span></h3>
+          <p>La columna vertebral. Dos rutas paralelas: <b>Celular</b> (39 clases, de la interfaz a los hacks) y <b>PC</b> (33 clases en 8 módulos). Ve en orden y no te saltes clases.</p>
+        </div>
+        <a class="btn" data-l="b1" target="_blank" rel="noopener">ABRIR BLOQUE 1 →</a>
+      </div>
+      <ul class="detalle">
+        <li>Ruta Celular: interfaz, cortes, herramientas y ejercicios</li>
+        <li>Ruta PC: de la introducción a la exportación</li>
+        <li>Proyectos paso a paso con casos reales</li>
+        <li>Texto, efectos, color y técnicas avanzadas</li>
+      </ul>
+    </div>
+
+    <div class="bloque">
+      <div class="fila">
+        <div class="info">
+          <div class="kicker">Bloque 2 · 87 clases</div>
+          <h3>🔥 Edición Avanzada y Viral</h3>
+          <p><b>Un efecto por clase, con su nombre.</b> Busca el que quieras hacer y replícalo al instante: Clon, Speed Ramping, Croma, Freeze Frame, Dolly Zoom, Glitch y decenas más.</p>
+        </div>
+        <a class="btn" data-l="b2" target="_blank" rel="noopener">ABRIR BLOQUE 2 →</a>
+      </div>
+      <ul class="detalle">
+        <li>54 tutoriales para celular</li>
+        <li>33 tutoriales para PC</li>
+        <li>Los efectos que rompen en TikTok y Reels</li>
+        <li>Cada clase es independiente: entra directo al efecto</li>
+      </ul>
+    </div>
+
+    <div class="bloque">
+      <div class="fila">
+        <div class="info">
+          <div class="kicker">Bloque 3 · Bono · 32 clases</div>
+          <h3>🎁 Curso Viral Cinematics</h3>
+          <p>El regalo que vale oro: <b>mentalidad de creador, filmmaking con iPhone, algoritmo de TikTok e Instagram, estrategia y monetización</b>. Para que lo que edites también crezca.</p>
+        </div>
+        <a class="btn" data-l="b3" target="_blank" rel="noopener">ABRIR EL BONO →</a>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <div class="fila">
+        <div class="info">
+          <div class="kicker">Extra</div>
+          <h3>🎬 +500 Recursos para Editar</h3>
+          <p>Overlays, plantillas, sonidos y materiales listos para meterle sabor a tus ediciones. Descarga lo que necesites para cada proyecto.</p>
+        </div>
+        <a class="btn" data-l="rec" target="_blank" rel="noopener">ABRIR RECURSOS →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Instalación de CapCut</div>
+    <div class="aviso" style="margin-bottom:14px"><span class="ic">⚠️</span><span><b>Antes de instalar, lee las instrucciones que están DENTRO de cada carpeta.</b> Ahí te explican paso a paso cómo instalar y activar la app sin problemas.</span></div>
+
+    <div class="bloque">
+      <div class="fila">
+        <div class="info">
+          <div class="kicker">Instalación</div>
+          <h3>📱 CapCut Móvil (Android / iPhone)</h3>
+          <p>La app para editar desde tu celular, con su guía de instalación y configuración adentro.</p>
+        </div>
+        <a class="btn sec" data-l="mov" target="_blank" rel="noopener">ABRIR CARPETA →</a>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <div class="fila">
+        <div class="info">
+          <div class="kicker">Instalación</div>
+          <h3>💻 CapCut PC (Windows / Mac)</h3>
+          <p>La versión de escritorio con el método de funciones PRO y su configuración, explicados adentro.</p>
+        </div>
+        <a class="btn sec" data-l="pc" target="_blank" rel="noopener">ABRIR CARPETA →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Dudas rápidas</div>
+    <div class="acc">
+      <details><summary>¿El acceso se vence?</summary><div class="acc-body">No. Descarga el material y guárdalo en tu equipo: es tuyo para siempre.</div></details>
+      <details><summary>¿Puedo ver las clases sin descargar?</summary><div class="acc-body">Algunas sí, pero no lo recomendamos: son videos largos y pesados y Drive no siempre los reproduce en línea. Descárgalos y se ven perfecto.</div></details>
+      <details><summary>¿En cuántos dispositivos puedo usarlo?</summary><div class="acc-body">En los que quieras. Una vez descargado, el material es tuyo, sin límite de dispositivos.</div></details>
+      <details><summary>¿En qué orden veo el curso?</summary><div class="acc-body">Bloque 1 en orden (tu ruta: celular o PC). Después el Bloque 2 lo usas como catálogo: entra directo al efecto que quieras hacer. El Bono lo puedes ver en paralelo.</div></details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="soporte">
+      <h2>¿Algo no te abre o tienes un problema?</h2>
+      <p>Escríbenos y te lo resolvemos rápido. Estamos para que edites, no para que pelees con descargas.</p>
+      <a class="btn" data-l="wa" target="_blank" rel="noopener">📲 Soporte por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="justify-content:center;margin-bottom:10px">
+      <span class="mark"><img src="../assets/capcut-icon.png" alt="CapCut" width="19" height="19"></span>
+      CapCut<span class="sub">PRO</span>
+    </div>
+    <p>Curso Editor CapCut PRO · Aprende. Emprende. Transforma.</p>
+    <p class="disc">CapCut es una marca de sus respectivos dueños. Este es un curso educativo independiente sobre cómo usar la aplicación; no está afiliado, patrocinado ni respaldado por CapCut / ByteDance.</p>
+  </div>
+</footer>
+
+<script>
+var L={
+b1:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMThhVGE1X1NMSDc3Vzc3T1RFbm5fZDJpUExNQzZ4S2pq",
+b2:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMS1vQnAyTnRzcWdsb24wbFpWODFFQnBDcW9aMnBmZ3RQ",
+b3:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTRvWGFjMzZwbFVZRmM2dWlRZXczanhNWlQzYjdPSndz",
+rec:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTFDNWxvMUNMeTFVcG1hLUJ0UlJ5REllaldoT3ZUamhJ",
+mov:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMW1wT19OSFVpUkJqOWNlMHQ0OGxwLS00YnJveFhBZVpT",
+pc:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXZmdDZLQnhHSU1IdmVpSEkyR3pLSDFJQVdDYWhaUHUx",
+wa:"aHR0cHM6Ly93YS5tZS81NzMxMDI2MTEwMjM/dGV4dD1Ib2xhISUyMENvbXByZSUyMGVsJTIwY3Vyc28lMjBkZSUyMENhcEN1dCUyMHklMjB0ZW5nbyUyMHVuJTIwcHJvYmxlbWElMjBjb24lMjB1biUyMGFjY2Vzbw=="
+};
+document.querySelectorAll("[data-l]").forEach(function(e){e.href=atob(L[e.dataset.l])});
+</script>
+
+</body>
+</html>
