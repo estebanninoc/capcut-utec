@@ -228,6 +228,10 @@
   .contador b{font-family:var(--disp);font-weight:900;color:#fff;font-variant-numeric:tabular-nums;font-size:1.05rem}
   .chip-off{display:inline-block;background:#e11d2e;color:#fff;font-family:var(--disp);font-weight:900;
     font-size:.72rem;padding:4px 10px;border-radius:999px;margin-left:8px;vertical-align:middle}
+
+  .bb-off{display:inline-block;background:#e11d2e;color:#fff;font-family:var(--disp);font-weight:900;
+    font-size:.66rem;padding:3px 8px;border-radius:999px;vertical-align:middle;margin-left:2px}
+  .buybar .p s{color:#7a7a83}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -485,7 +489,7 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
 
 <!-- BARRA FIJA MÓVIL -->
 <div class="buybar" id="buybar">
-  <div class="p"><span id="buybar-precio">$9.99</span> <small>pago único · acceso de por vida</small></div>
+  <div class="p"><span id="buybar-precio">$9.99</span> <span class="bb-off">70% OFF</span> <small>antes <s id="buybar-antes">$33.30</s> · pago único</small></div>
   <a href="#comprar" class="btn">Quiero el curso →</a>
 </div>
 <script>
@@ -537,6 +541,8 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
       btn.textContent='Quiero mi acceso ahora · '+p+' →';
       big.innerHTML= MON ? p : '$'+PR[k]+' <span style="font-size:1.3rem;color:var(--mut)">USD</span>';
       var bb=document.getElementById('buybar-precio'); if(bb) bb.textContent=p;
+      var bba=document.getElementById('buybar-antes');
+      if(bba){ bba.textContent = MON ? fnum(redUp(MON.t[PR[k]]/0.3)) : '$'+(parseFloat(PR[k])/0.3).toFixed(2); }
       var ant=document.getElementById('precio-antes');
       if(ant){
         if(MON){ ant.textContent=fnum(redUp(MON.t[PR[k]]/0.3)); }
