@@ -10,18 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#000; --panel:#101012; --panel2:#17171a; --line:#28282d;
-    --tx:#ffffff; --mut:#9a9aa3; --dim:#6e6e77; --radius:16px; --max:680px;
+    --bg:#000; --panel:#101012; --panel2:#17171a; --panel3:#1d1d21; --line:#28282d;
+    --tx:#fff; --mut:#9a9aa3; --dim:#6e6e77; --max:720px;
     --disp:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:40px}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
-  h1,h2{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.1}
+  body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:44px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  h1,h2{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.12}
   a{color:inherit;text-decoration:none}
 
-  nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
   .logo{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:900;font-size:1.1rem;letter-spacing:-.04em}
   .logo .mark{width:28px;height:28px;border-radius:7px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -29,41 +29,65 @@
   .logo .sub{font-weight:700;font-size:.68rem;letter-spacing:.14em;color:var(--mut);text-transform:uppercase;align-self:flex-end;padding-bottom:2px}
   .navtag{font-size:.74rem;font-weight:700;color:#4ade80;background:rgba(0,255,100,.08);border:1px solid rgba(0,255,100,.25);border-radius:999px;padding:5px 12px}
 
-  header{padding:38px 0 10px;text-align:center}
-  header h1{font-size:clamp(1.6rem,5.5vw,2.2rem);margin-bottom:8px}
-  header p{color:var(--mut);font-size:.98rem;max-width:440px;margin:0 auto}
+  header{padding:36px 0 8px;text-align:center}
+  header h1{font-size:clamp(1.6rem,5.5vw,2.15rem);margin-bottom:9px}
+  header p{color:var(--mut);font-size:.96rem;max-width:470px;margin:0 auto}
   header p b{color:#fff}
 
-  .avisos{margin:22px 0 6px;display:grid;gap:8px}
-  .aviso{display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.88rem;color:var(--mut)}
+  .avisos{margin:20px 0 0;display:grid;gap:8px}
+  .aviso{display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.87rem;color:var(--mut)}
   .aviso b{color:#fff}
-  .aviso .ic{flex-shrink:0}
+  .tip{margin-top:14px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:.9rem;color:var(--mut);text-align:center}
+  .tip b{color:#fff}
 
-  .grupo{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:22px}
-  .grupo-cab{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}
-  .grupo-cab h2{font-size:1.15rem}
-  .grupo-cab .cnt{font-size:.76rem;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
-  .item{display:flex;align-items:center;gap:12px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;transition:border-color .15s}
-  .item:last-child{margin-bottom:0}
-  .item:hover{border-color:#4a4a52}
-  .item .ic{font-size:1.35rem;flex-shrink:0}
-  .item .tx{flex:1;min-width:0}
-  .item .tx b{display:block;font-size:.98rem;line-height:1.25}
-  .item .tx small{color:var(--mut);font-size:.8rem}
-  .btn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-family:var(--disp);font-weight:800;font-size:.9rem;padding:11px 22px;border-radius:999px;flex-shrink:0;transition:transform .13s ease}
+  .bloque{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:20px}
+  .bcab{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .bcab .ic{font-size:1.5rem;flex-shrink:0}
+  .bcab h2{font-size:1.12rem;flex:1;min-width:0}
+  .bcab .cnt{font-size:.72rem;font-weight:800;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+
+  .fila{display:flex;align-items:center;gap:12px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:9px;transition:border-color .15s}
+  .fila:hover{border-color:#4a4a52}
+  .fila .ic{font-size:1.3rem;flex-shrink:0}
+  .fila .tx{flex:1;min-width:0}
+  .fila .tx b{display:block;font-size:.96rem;line-height:1.25}
+  .fila .tx small{color:var(--mut);font-size:.79rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-family:var(--disp);font-weight:800;font-size:.87rem;padding:10px 20px;border-radius:999px;flex-shrink:0;transition:transform .13s ease}
   .btn:hover{transform:translateY(-2px)}
-  .nota{margin-top:12px;font-size:.84rem;color:var(--mut);background:var(--panel2);border:1px dashed #3a3a40;border-radius:12px;padding:11px 14px}
+
+  details{background:var(--panel2);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+  details[open]{border-color:#3a3a42}
+  summary{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;list-style:none;user-select:none}
+  summary::-webkit-details-marker{display:none}
+  summary:hover{background:var(--panel3)}
+  summary .ic{font-size:1.3rem;flex-shrink:0}
+  summary .tx{flex:1;min-width:0}
+  summary .tx b{display:block;font-size:.96rem;line-height:1.25}
+  summary .tx small{color:var(--mut);font-size:.79rem}
+  .chev{width:26px;height:26px;border-radius:50%;background:#26262c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0;transition:transform .2s ease}
+  details[open] .chev{transform:rotate(90deg);background:#fff;color:#000}
+  .lista{padding:2px 12px 12px}
+  .sub{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:11px;border:1px solid transparent;transition:background .13s,border-color .13s}
+  .sub:hover{background:var(--panel3);border-color:var(--line)}
+  .sub .st{flex:1;min-width:0}
+  .sub .st b{display:block;font-size:.9rem;font-weight:600;line-height:1.3}
+  .sub .st small{color:var(--dim);font-size:.76rem}
+  .go{font-family:var(--disp);font-weight:800;font-size:.76rem;color:#fff;background:#2c2c33;padding:6px 13px;border-radius:999px;flex-shrink:0}
+  .sub:hover .go{background:#fff;color:#000}
+
+  .nota{margin-top:10px;font-size:.83rem;color:var(--mut);background:var(--panel2);border:1px dashed #3a3a40;border-radius:12px;padding:11px 14px}
   .nota b{color:#fff}
+  .anidado{margin:9px 0 0;border-color:#33333a}
 
-  .soporte{margin-top:26px;text-align:center;background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:24px}
+  .soporte{margin-top:24px;text-align:center;background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:24px}
   .soporte p{color:var(--mut);font-size:.92rem;margin-bottom:14px}
-
-  footer{margin-top:34px;text-align:center;color:var(--mut);font-size:.82rem}
+  footer{margin-top:32px;text-align:center;color:var(--mut);font-size:.82rem}
   .disc{color:#5c5c64;font-size:.72rem;max-width:600px;margin:12px auto 0;line-height:1.5}
 
-  @media(max-width:520px){
-    .item{flex-wrap:wrap}
-    .item .btn{width:100%;order:3}
+  @media(max-width:540px){
+    .fila{flex-wrap:wrap}
+    .fila .btn{width:100%;order:3;margin-top:2px}
+    .bcab .cnt{display:none}
   }
 </style>
 </head>
@@ -83,58 +107,145 @@
 
   <header>
     <h1>🎥 Curso Editor CapCut PRO</h1>
-    <p>Todos tus accesos organizados. <b>Toca cualquier botón</b> para abrir el material — se abre en una pestaña nueva.</p>
+    <p>Todo tu curso, <b>módulo por módulo</b>. 192 clases en video. Toca el módulo que quieras ver: se abre en una pestaña nueva.</p>
   </header>
 
   <div class="avisos">
-    <div class="aviso"><span class="ic">⬇️</span><span><b>DESCARGA los videos antes de verlos</b> (botón ⬇️ arriba a la derecha en Drive). Son clases largas y en línea no siempre reproducen bien.</span></div>
-    <div class="aviso"><span class="ic">💻</span><span><b>¿No abre en el celular?</b> Ábrelo en el computador: los archivos grandes a veces no cargan en el teléfono.</span></div>
-    <div class="aviso"><span class="ic">✅</span><span><b>Todo es tuyo y todo es descargable.</b> No se vence nunca.</span></div>
+    <div class="aviso"><span>⬇️</span><span><b>DESCARGA los videos antes de verlos.</b> Toca el botón de descarga (arriba a la derecha en Drive). Son clases largas y pesan mucho: en línea no siempre reproducen bien.</span></div>
+    <div class="aviso"><span>💻</span><span><b>¿Un archivo no abre en el celular?</b> Ábrelo en el computador. Los archivos grandes a veces no cargan en el teléfono.</span></div>
+    <div class="aviso"><span>✅</span><span><b>Todo es tuyo y todo es descargable.</b> No se vence nunca.</span></div>
   </div>
 
-  <div class="grupo">
-    <div class="grupo-cab">
-      <h2>🎥 Tu Curso Editor CapCut PRO</h2>
-      <span class="cnt">4 módulos</span>
+  <div class="tip">💡 <b>¿PC o celular?</b> Cada curso viene en dos versiones: una para computador y otra para celular. Elige la tuya y sigue los módulos en orden.</div>
+
+  <!-- BLOQUE 1 -->
+  <div class="bloque">
+    <div class="bcab"><span class="ic">🎥</span><h2>1) Curso de 0 a Experto</h2><span class="cnt">72 clases</span></div>
+
+    <div class="fila">
+      <span class="ic">📁</span>
+      <span class="tx"><b>Abrir el curso completo</b><small>las dos versiones juntas</small></span>
+      <a class="btn" data-l="todo" target="_blank" rel="noopener">ABRIR TODO ▸</a>
     </div>
-    <div class="item">
-      <span class="ic">🎥</span>
-      <span class="tx"><b>1) Curso de 0 a Experto</b><small>72 clases · empieza por aquí</small></span>
-      <a class="btn" data-l="b1" target="_blank" rel="noopener">ABRIR ▸</a>
+
+    <details>
+      <summary><span class="ic">💻</span><span class="tx"><b>Si editas en COMPUTADOR</b><small>Curso aprende CapCut en PC · 33 clases</small></span><span class="chev">▸</span></summary>
+      <div class="lista">
+        <a class="sub" data-l="pc" target="_blank" rel="noopener"><span class="st"><b>📂 Abrir la carpeta completa de PC</b><small>33 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pc00" target="_blank" rel="noopener"><span class="st"><b>00 Bienvenida a CapCut Mastery PRO</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pc1" target="_blank" rel="noopener"><span class="st"><b>Módulo 1 · Introducción a CapCut</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pc2" target="_blank" rel="noopener"><span class="st"><b>Módulo 2 · Fundamentos de Edición</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pc3" target="_blank" rel="noopener"><span class="st"><b>Módulo 3 · Efectos y Filtros</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pc4" target="_blank" rel="noopener"><span class="st"><b>Módulo 4 · Texto y Títulos</b><small>5 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pc5" target="_blank" rel="noopener"><span class="st"><b>Módulo 5 · Técnicas y acciones Avanzadas</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pc6" target="_blank" rel="noopener"><span class="st"><b>Módulo 6 · Repaso del Proyecto y Exportación</b><small>2 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pc7" target="_blank" rel="noopener"><span class="st"><b>Módulo 7 · Despedida</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="pcbonos" target="_blank" rel="noopener"><span class="st"><b>#BONOS (enlace externo, no es video)</b><small>1 archivo</small></span><span class="go">ABRIR ▸</span></a>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="ic">📱</span><span class="tx"><b>Si editas en CELULAR</b><small>Curso aprende CapCut en móvil · 39 clases</small></span><span class="chev">▸</span></summary>
+      <div class="lista">
+        <a class="sub" data-l="mov" target="_blank" rel="noopener"><span class="st"><b>📂 Abrir la carpeta completa de móvil</b><small>39 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="mov1" target="_blank" rel="noopener"><span class="st"><b>Módulo 1 · Conociendo la interfaz</b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="mov2" target="_blank" rel="noopener"><span class="st"><b>Módulo 2 · Herramientas para videos cortos</b><small>15 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="mov3" target="_blank" rel="noopener"><span class="st"><b>Módulo 3 · Proyectos completos paso a paso</b><small>7 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="mov4" target="_blank" rel="noopener"><span class="st"><b>Módulo 4 · Hacks y otras técnicas</b><small>13 clases</small></span><span class="go">ABRIR ▸</span></a>
+      </div>
+    </details>
+  </div>
+
+  <!-- BLOQUE 2 -->
+  <div class="bloque">
+    <div class="bcab"><span class="ic">🔥</span><h2>2) Edición Avanzada y Viral</h2><span class="cnt">87 clases</span></div>
+    <div class="fila">
+      <span class="ic">📁</span>
+      <span class="tx"><b>Abrir el módulo completo</b><small>un efecto por clase</small></span>
+      <a class="btn" data-l="av" target="_blank" rel="noopener">ABRIR TODO ▸</a>
     </div>
-    <div class="item">
-      <span class="ic">🔥</span>
-      <span class="tx"><b>2) Edición Avanzada y Viral</b><small>87 efectos, uno por clase</small></span>
-      <a class="btn" data-l="b2" target="_blank" rel="noopener">ABRIR ▸</a>
+    <details>
+      <summary><span class="ic">🔥</span><span class="tx"><b>Ver por versión</b><small>celular y computador por separado</small></span><span class="chev">▸</span></summary>
+      <div class="lista">
+      <a class="sub" data-l="avcel" target="_blank" rel="noopener"><span class="st"><b>Edición Avanzada en CELULAR</b><small>54 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="avpc" target="_blank" rel="noopener"><span class="st"><b>Edición Avanzada en PC</b><small>33 clases</small></span><span class="go">ABRIR ▸</span></a>
+      </div>
+    </details>
+  </div>
+
+  <!-- BLOQUE 3 -->
+  <div class="bloque">
+    <div class="bcab"><span class="ic">🎁</span><h2>3) Bono: Viral Cinematics</h2><span class="cnt">32 clases</span></div>
+    <div class="fila">
+      <span class="ic">📁</span>
+      <span class="tx"><b>Abrir el bono completo</b><small>algoritmo, filmmaking y monetización</small></span>
+      <a class="btn" data-l="cin" target="_blank" rel="noopener">ABRIR TODO ▸</a>
     </div>
-    <div class="item">
-      <span class="ic">🎁</span>
-      <span class="tx"><b>3) Bono: Viral Cinematics</b><small>32 clases · algoritmo y monetización</small></span>
-      <a class="btn" data-l="b3" target="_blank" rel="noopener">ABRIR ▸</a>
-    </div>
-    <div class="item">
-      <span class="ic">🎬</span>
-      <span class="tx"><b>+500 Recursos para Editar</b><small>overlays, plantillas y sonidos</small></span>
-      <a class="btn" data-l="rec" target="_blank" rel="noopener">ABRIR ▸</a>
+    <details>
+      <summary><span class="ic">🎬</span><span class="tx"><b>Ver módulo por módulo</b><small>5 secciones</small></span><span class="chev">▸</span></summary>
+      <div class="lista">
+      <a class="sub" data-l="cin1" target="_blank" rel="noopener"><span class="st"><b>01 Mentalidad</b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cin2" target="_blank" rel="noopener"><span class="st"><b>02 Organización y Preparación</b><small>2 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cin3" target="_blank" rel="noopener"><span class="st"><b>03 Filmmaking</b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cin4" target="_blank" rel="noopener"><span class="st"><b>04 Algoritmia</b><small>3 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <details class="anidado">
+          <summary><span class="ic">✂️</span><span class="tx"><b>05 CapCut</b><small>19 clases + 3 PDF</small></span><span class="chev">▸</span></summary>
+          <div class="lista">
+            <a class="sub" data-l="cc" target="_blank" rel="noopener"><span class="st"><b>📂 Abrir la carpeta 05 CapCut</b><small>19 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cc1" target="_blank" rel="noopener"><span class="st"><b>01 Primeros Pasos en CapCut</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cc2" target="_blank" rel="noopener"><span class="st"><b>02 Edición Profesional en CapCut</b><small>9 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cc3" target="_blank" rel="noopener"><span class="st"><b>03 Textos y Subtítulos en CapCut</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cc4" target="_blank" rel="noopener"><span class="st"><b>04 Música, Audios y SFX</b><small>1 clase + 1 PDF</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cc5" target="_blank" rel="noopener"><span class="st"><b>05 Estrategia de contenido</b><small>3 clases + 1 PDF</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cc6" target="_blank" rel="noopener"><span class="st"><b>06 Análisis de mis videos virales</b><small>3 clases</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cc7" target="_blank" rel="noopener"><span class="st"><b>07 Monetización</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+      <a class="sub" data-l="cc8" target="_blank" rel="noopener"><span class="st"><b>08 Tips y Consejos (PDF de Premiere Pro)</b><small>1 PDF</small></span><span class="go">ABRIR ▸</span></a>
+          </div>
+        </details>
+      </div>
+    </details>
+    <div class="nota">📄 El PDF de <b>08 Tips y Consejos</b> es de Premiere Pro, no de CapCut: va de regalo como material extra.</div>
+  </div>
+
+  <!-- BLOQUE 4 -->
+  <div class="bloque">
+    <div class="bcab"><span class="ic">📄</span><h2>Material de apoyo</h2><span class="cnt">PDF</span></div>
+    <div class="fila">
+      <span class="ic">📄</span>
+      <span class="tx"><b>Guía de Edición Dopamínica</b><small>PDF · 4,4 MB</small></span>
+      <a class="btn" data-l="guia" target="_blank" rel="noopener">ABRIR ▸</a>
     </div>
   </div>
 
-  <div class="grupo">
-    <div class="grupo-cab">
-      <h2>📱 App CapCut PRO</h2>
-      <span class="cnt">Instalación</span>
-    </div>
-    <div class="item">
+  <!-- BLOQUE 5 -->
+  <div class="bloque">
+    <div class="bcab"><span class="ic">⚙️</span><h2>App CapCut PRO y configuración</h2><span class="cnt">Instrucciones</span></div>
+    <div class="fila">
       <span class="ic">📱</span>
-      <span class="tx"><b>CapCut Móvil</b><small>Android / iPhone</small></span>
-      <a class="btn" data-l="mov" target="_blank" rel="noopener">ABRIR ▸</a>
+      <span class="tx"><b>CapCut Móvil</b><small>Android / iPhone · 2 documentos</small></span>
+      <a class="btn" data-l="appmov" target="_blank" rel="noopener">ABRIR ▸</a>
     </div>
-    <div class="item">
+    <div class="fila">
       <span class="ic">💻</span>
-      <span class="tx"><b>CapCut PC</b><small>Windows / Mac</small></span>
-      <a class="btn" data-l="pc" target="_blank" rel="noopener">ABRIR ▸</a>
+      <span class="tx"><b>CapCut PC</b><small>Windows / Mac · 1 video + 1 documento</small></span>
+      <a class="btn" data-l="apppc" target="_blank" rel="noopener">ABRIR ▸</a>
     </div>
-    <div class="nota">⚠️ <b>IMPORTANTE:</b> antes de instalar, lee las instrucciones que están <b>dentro de la carpeta</b>. Ahí te explican paso a paso cómo instalar y activar la app sin problemas.</div>
+    <div class="nota">⚠️ <b>IMPORTANTE:</b> estas carpetas traen los documentos con las instrucciones, no el instalador. Léelos completos: ahí te explican paso a paso dónde descargar, cómo instalar y cómo activar la app sin problemas.</div>
+  </div>
+
+  <!-- BLOQUE 6 -->
+  <div class="bloque">
+    <div class="bcab"><span class="ic">📁</span><h2>Ver todo en Google Drive</h2><span class="cnt">192 clases</span></div>
+    <div class="fila">
+      <span class="ic">📁</span>
+      <span class="tx"><b>Carpeta completa del curso</b><small>todos los módulos juntos</small></span>
+      <a class="btn" data-l="drivecurso" target="_blank" rel="noopener">ABRIR ▸</a>
+    </div>
+    <div class="fila">
+      <span class="ic">📁</span>
+      <span class="tx"><b>Carpeta completa de la App</b><small>instrucciones de instalación</small></span>
+      <a class="btn" data-l="driveapp" target="_blank" rel="noopener">ABRIR ▸</a>
+    </div>
   </div>
 
   <div class="soporte">
@@ -151,12 +262,44 @@
 
 <script>
 var L={
-b1:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMThhVGE1X1NMSDc3Vzc3T1RFbm5fZDJpUExNQzZ4S2pq",
-b2:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMS1vQnAyTnRzcWdsb24wbFpWODFFQnBDcW9aMnBmZ3RQ",
-b3:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTRvWGFjMzZwbFVZRmM2dWlRZXczanhNWlQzYjdPSndz",
-rec:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTFDNWxvMUNMeTFVcG1hLUJ0UlJ5REllaldoT3ZUamhJ",
-mov:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMW1wT19OSFVpUkJqOWNlMHQ0OGxwLS00YnJveFhBZVpT",
-pc:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXZmdDZLQnhHSU1IdmVpSEkyR3pLSDFJQVdDYWhaUHUx",
+todo:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMThhVGE1X1NMSDc3Vzc3T1RFbm5fZDJpUExNQzZ4S2pq",
+pc:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXpfZXRGcml5N2l0UTQ0NWF4MGY4cC05bDQtenV1UVUz",
+pc00:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXJuZGFnTVI1aFBZT1V5VlFtYThXVlZqc0pGdEpib1Rh",
+pc1:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUp2MTVIQ1hWcEhCVTdMZ2ZKMExORUh1OXFqNFRWM0RU",
+pc2:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMWN3UEJiMlNzTDBXNVZCT2UtSVVIUlJ6Si1LWlhNYUpL",
+pc3:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTl6c1N5TFBCaTNSc2dKM0pTOUYzTmZUd2dKWXRMZW9E",
+pc4:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTluMVc3VXR6Q0NUdTFPMDFDZ2I4WlFobHJGYTZsZ05j",
+pc5:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXVwSFNEa042ZmFfLThhQ0I4c3pfNGdzclRZN1FIR1BB",
+pc6:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUgteDU4WGpuZkpwT0VvZ1BhaWRKdi1GcHdVZGtkc1Fv",
+pc7:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXRNOUlOOWdUcGV5THl6UVhNTWxCVWFMa1d6X2Uzbjcw",
+pcbonos:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMU02d1ZKYzRJeHBjcmRoNEVmTTktYkpNWkNic0paVUJ5",
+mov:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTA2dE5wcGlFZ0lubDdVaDFFVHdLZFVGb0VjV0cyN191",
+mov1:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTVCeDBUcVhNT05CNmRXX3BWWk8xcE1ucjN3NjNLcU1O",
+mov2:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMVFweUdUbjNRV0tBVU1CNGphdjFOZ1RGX0ZXdExSU0JD",
+mov3:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMV93OHItUk5ySWlrNVl3UVRhLVFSSFhha19oSjZZTzRX",
+mov4:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMV9GNzZPM2t6dmlvbHVnMHVvSTZFeTk0aFhhbm9nS3FZ",
+av:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMS1vQnAyTnRzcWdsb24wbFpWODFFQnBDcW9aMnBmZ3RQ",
+avcel:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUhCVDhEVFFGUEMzNzRVb0lvcDV3elBXNERHVEtuVkFl",
+avpc:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUVqQjVySzdGVno0UVVlMkhqUVlLQkdNRDB4MU9kNkJD",
+cin:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTdmY1ByQ01VOTFpcmVzVi1MQmlBZTRMbnZGWU90YkIy",
+cin1:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTFSZ2x4NXlwYVVBam5nVUxpalRtLWZZR2RZckZVSkF5",
+cin2:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMVQ5VDZ5NURLSDU3WmlTNXhBTEdqQlhqSWpoYm5VSmhO",
+cin3:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMVZKMUFjT2tiQll0N25vYmkxYnRYV0lVTjY2NmF6dW44",
+cin4:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMWh0NlV4ZVdGdHJMQjVxcFhWTkFoeEloTUc2UjRnRndz",
+cc:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUpRbDV2VlVDbnJVeTNWWnpjZ2lKM2d3VG1iQ2pvRDlH",
+cc1:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXVXMlB4UHBoQ0NtNlNwRFN2bVRlZFhuNFN5YjJhZ3V2",
+cc2:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMWczbVRNS0J4VEpuamhna0RMOVFKd0taWjZnQXdMeDkx",
+cc3:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXJlT2JZcUVWSlJwU2FRa0NpQTJMV1BsSDAzem9fTVRu",
+cc4:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMVpWQkVFeTg3OHYtemlISUwwM0RJT2RUSzEtemlWNEV3",
+cc5:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTVzUkwxVjMtWVk3bE5ZbGxIaXc4ck9KODUzWncxRFJh",
+cc6:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMWpLOTZmZzZlM3A5eHZFZUhheksxclJjOUhld01qcjFr",
+cc7:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMVkxWko3MWlGckJSWkU3OExkdl9SVGc2UEFVQzBIVG90",
+cc8:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMU1QZk91cHRBeDNpalJRU2dXdXEyYnZFMjFMaFlYTnNu",
+guia:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTFDNWxvMUNMeTFVcG1hLUJ0UlJ5REllaldoT3ZUamhJ",
+appmov:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMW1wT19OSFVpUkJqOWNlMHQ0OGxwLS00YnJveFhBZVpT",
+apppc:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXZmdDZLQnhHSU1IdmVpSEkyR3pLSDFJQVdDYWhaUHUx",
+drivecurso:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMWVSenBXLTlpamE4SDR4ZzhNTGg1dnZNZnB3TW1aTjFI",
+driveapp:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMThNNTBxaXRwYkpWd3ZkTTBlVHdEclBvTm1GVXh5Y0c4",
 wa:"aHR0cHM6Ly93YS5tZS81NzMxMDI2MTEwMjM/dGV4dD1Ib2xhISUyMENvbXByZSUyMGVsJTIwY3Vyc28lMjBkZSUyMENhcEN1dCUyMHklMjB0ZW5nbyUyMHVuJTIwcHJvYmxlbWElMjBjb24lMjB1biUyMGFjY2Vzbw=="
 };
 document.querySelectorAll("[data-l]").forEach(function(e){e.href=atob(L[e.dataset.l])});
