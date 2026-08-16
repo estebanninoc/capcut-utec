@@ -215,6 +215,19 @@
     .band .wrap{padding:48px 20px}
     .buybar{display:flex}
   }
+
+  /* oferta 70% + contador */
+  .oferta-badge{display:inline-flex;align-items:center;gap:8px;background:#e11d2e;color:#fff;
+    font-family:var(--disp);font-weight:900;font-size:.86rem;letter-spacing:.02em;
+    padding:8px 16px;border-radius:999px;margin-bottom:14px;text-transform:uppercase}
+  .precio-antes{color:var(--mut);font-size:1rem;margin-top:2px}
+  .precio-antes s{color:#8a8a93}
+  .contador{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+    background:rgba(225,29,46,.10);border:1px solid rgba(225,29,46,.35);border-radius:12px;
+    padding:9px 16px;font-size:.92rem;color:#ff9aa4}
+  .contador b{font-family:var(--disp);font-weight:900;color:#fff;font-variant-numeric:tabular-nums;font-size:1.05rem}
+  .chip-off{display:inline-block;background:#e11d2e;color:#fff;font-family:var(--disp);font-weight:900;
+    font-size:.72rem;padding:4px 10px;border-radius:999px;margin-left:8px;vertical-align:middle}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -364,8 +377,11 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
     <div class="eyebrow">Empieza hoy</div>
     <h2 class="title">Arma tu pack, un solo pago</h2>
     <div class="price-card">
+      <div class="oferta-badge">🎁 Oferta por única vez · 70% OFF</div>
       <div class="price-now" id="precio-grande">$9.99 <span style="font-size:1.3rem;color:var(--mut)">USD</span></div>
-      <div style="color:var(--mut)">pago único · acceso de por vida</div>
+      <div class="precio-antes">antes <s id="precio-antes">$33.30 USD</s></div>
+      <div style="color:var(--mut);margin-top:6px">pago único · acceso de por vida</div>
+      <div class="contador">⏳ Esta oferta expira en <b id="reloj">15:00</b></div>
       <div style="color:var(--mut);font-size:.9rem;margin-top:12px">💳 Pagas en la moneda de tu país. Stripe convierte automáticamente al cambio del día en toda Latinoamérica.</div>
       <ul class="price-list">
         <li><b>Curso de 0 a Experto</b>: 72 clases en video (ruta celular + ruta PC)</li>
@@ -506,6 +522,10 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
       var dec=(n%1!==0)?2:0;
       return SIM[MON.cur]+n.toLocaleString(LOC[MON.cur]||"es",{minimumFractionDigits:dec,maximumFractionDigits:dec})+" "+MON.cur;
     }
+    function redUp(n){
+      var s = n>=10000?100 : n>=1000?10 : n>=100?1 : 0.1;
+      return Math.round(Math.ceil(n/s)*s*100)/100;
+    }
     function precio(k){ return MON?fnum(MON.t[PR[k]]):"$"+PR[k]; }
 
     var fx=document.querySelector('#bump-fx input'),cin=document.querySelector('#bump-cin input');
@@ -517,6 +537,11 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
       btn.textContent='Quiero mi acceso ahora · '+p+' →';
       big.innerHTML= MON ? p : '$'+PR[k]+' <span style="font-size:1.3rem;color:var(--mut)">USD</span>';
       var bb=document.getElementById('buybar-precio'); if(bb) bb.textContent=p;
+      var ant=document.getElementById('precio-antes');
+      if(ant){
+        if(MON){ ant.textContent=fnum(redUp(MON.t[PR[k]]/0.3)); }
+        else{ ant.textContent='$'+(parseFloat(PR[k])/0.3).toFixed(2)+' USD'; }
+      }
       document.getElementById('bump-fx').classList.toggle('on',fx.checked);
       document.getElementById('bump-cin').classList.toggle('on',cin.checked);
       var pTodo = MON?fnum(MON.t['16.99']):'$16.99';
@@ -533,6 +558,26 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
     fx.addEventListener('change',up); cin.addEventListener('change',up);
     up();
   })();
+</script>
+
+<script>
+(function(){
+  var el=document.getElementById('reloj'); if(!el) return;
+  var DUR=15*60*1000, K='ofertaFin', fin;
+  try{ fin=parseInt(sessionStorage.getItem(K)||'0',10); }catch(e){ fin=0; }
+  if(!fin || isNaN(fin) || fin-Date.now()>DUR){ fin=Date.now()+DUR; try{sessionStorage.setItem(K,fin);}catch(e){} }
+  function pinta(){
+    var q=fin-Date.now();
+    if(q<=0){
+      var c=el.parentNode;
+      if(c) c.innerHTML='⏳ <b>Últimas horas</b> de la oferta';
+      clearInterval(t); return;
+    }
+    var m=Math.floor(q/60000), s=Math.floor(q%60000/1000);
+    el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  }
+  var t=setInterval(pinta,1000); pinta();
+})();
 </script>
 </body>
 </html>
