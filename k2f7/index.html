@@ -93,6 +93,30 @@
     .bcab .cnt{display:none}
   }
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1882883786007114');
+fbq('track','PageView');
+(function(){
+  try{
+    var deStripe = /stripe\.com/.test(document.referrer || '');
+    var marca = 'fbqp_k2f7';
+    if (deStripe && !sessionStorage.getItem(marca)) {
+      sessionStorage.setItem(marca,'1');
+      fbq('track','Purchase',{value:9.99,currency:'USD',
+        content_name:'Curso Editor CapCut PRO',content_type:'product',content_ids:['k2f7']});
+    }
+  }catch(e){}
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=1882883786007114&ev=PageView&noscript=1"></noscript>
+<!-- /Meta Pixel -->
 </head>
 <body>
 
