@@ -509,6 +509,17 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
     var LK={base:'https://buy.stripe.com/7sY8wO5bocIZaiVfyOdwc00?locale=es',fx:'https://buy.stripe.com/bJefZg7jwfVbbmZaeudwc04?locale=es',cin:'https://buy.stripe.com/00w8wOfQ2dN39eR2M2dwc05?locale=es',todo:'https://buy.stripe.com/fZubJ00V8cIZ4YBbiydwc06?locale=es'};
     var PR={base:'9.99',fx:'11.98',cin:'11.98',todo:'12.99'};
 
+    /* atribucion: ?ad=CAPCUT-AD-n-LATAM en la URL del anuncio viaja a Stripe como client_reference_id */
+    var REF=null;
+    try{
+      var q=new URLSearchParams(location.search);
+      REF=q.get('ad')||q.get('utm_content')||null;
+      if(REF){ REF=REF.replace(/[^A-Za-z0-9_-]/g,'').slice(0,60)||null; if(REF) sessionStorage.setItem('capcutRef',REF); }
+      if(!REF) REF=sessionStorage.getItem('capcutRef');
+      if(!REF && (q.get('fbclid')||/facebook\.com|instagram\.com/.test(document.referrer))) REF='CAPCUT-META-SINTAG';
+    }catch(e){}
+    function conRef(u){ return REF ? u+'&client_reference_id='+REF : u; }
+
     /* ── MONEDA LOCAL: copia EXACTA de currency_options en Stripe ──
        Si se cambia un precio en Stripe hay que cambiarlo AQUI tambien. */
     var TAB={"COP":{"9.99":33900,"11.98":40700,"12.99":44100},"MXN":{"9.99":179,"11.98":215,"12.99":233},"BRL":{"9.99":53.99,"11.98":64.7,"12.99":70.2},"PEN":{"9.99":35.99,"11.98":43.2,"12.99":46.8},"CLP":{"9.99":9900,"11.98":11900,"12.99":12900},"ARS":{"9.99":16900,"11.98":20300,"12.99":22000},"UYU":{"9.99":429,"11.98":515,"12.99":558},"GTQ":{"9.99":79.99,"11.98":96,"12.99":104},"HNL":{"9.99":289,"11.98":347,"12.99":376},"NIO":{"9.99":389,"11.98":467,"12.99":506},"CRC":{"9.99":4749,"11.98":5700,"12.99":6180},"DOP":{"9.99":609,"11.98":730,"12.99":792},"PYG":{"9.99":62900,"11.98":75400,"12.99":81800},"BOB":{"9.99":129,"11.98":155,"12.99":168}};
@@ -536,7 +547,7 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
     var btn=document.getElementById('btn-pago'),big=document.getElementById('precio-grande'),nota=document.getElementById('bump-nota');
     function up(){
       var k = fx.checked&&cin.checked ? 'todo' : fx.checked ? 'fx' : cin.checked ? 'cin' : 'base';
-      btn.href=LK[k];
+      btn.href=conRef(LK[k]);
       var p=precio(k);
       btn.textContent='Quiero mi acceso ahora · '+p+' →';
       big.innerHTML= MON ? p : '$'+PR[k]+' <span style="font-size:1.3rem;color:var(--mut)">USD</span>';
