@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://www.youtube-nocookie.com">
 <link rel="preconnect" href="https://i.ytimg.com">
+<link rel="preconnect" href="https://s.ytimg.com">
 <style>
   :root{
     --bg:#000; --panel:#101012; --panel2:#17171a; --line:#28282d;
@@ -467,24 +468,13 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
     }
     if (lento) return; /* internet lento o ahorro de datos: solo miniaturas, cero video */
 
-    /* galeria: cada player se carga SOLO cuando su tarjeta se acerca a la pantalla
-       (antes cargaban los 6 de una -> pesado en Android viejo / internet malo).
-       Mientras tanto queda la miniatura ligera; el video entra al hacer scroll. */
-    var fxs = document.querySelectorAll('.fx[data-yt]');
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function(ents){
-        ents.forEach(function(e){
-          if (e.isIntersecting) {
-            var c = e.target;
-            if (!c.querySelector('.yt-live')) crear(c, c.dataset.yt, 'yt-live');
-            io.unobserve(c);
-          }
-        });
-      }, { rootMargin: '350px 0px' });
-      fxs.forEach(function(c){ io.observe(c); });
-    } else {
-      fxs.forEach(function(c){ if (!c.querySelector('.yt-live')) crear(c, c.dataset.yt, 'yt-live'); });
-    }
+    /* galeria: los players arrancan al abrir (quedan LISTOS antes de bajar, sin recargar al scroll),
+       pero ESCALONADOS ~250ms para no congelar Android viejo con 6 iframes en el mismo tick */
+    document.querySelectorAll('.fx[data-yt]').forEach(function(c, i){
+      setTimeout(function(){
+        if (!c.querySelector('.yt-live')) crear(c, c.dataset.yt, 'yt-live');
+      }, i * 250);
+    });
 
     /* hero: mismo clip pero arrancando en 0:03 (salta la cara) + carga inmediata + loop que reinicia en 0:03 */
     (function(){
