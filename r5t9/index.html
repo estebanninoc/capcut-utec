@@ -19,7 +19,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:44px}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
-  h1,h2{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.12}
+  h1,h2{font-family:var(--disp);font-weight:900;letter-spacing:-.035em;line-height:1.12}
   a{color:inherit;text-decoration:none}
 
   nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -92,6 +92,17 @@
     .fila .btn{width:100%;order:3;margin-top:2px}
     .bcab .cnt{display:none}
   }
+
+  /* --- formato 2026-09-23: portadas, modulos numerados, bajar-todo al pie --- */
+  .bcab .cov{width:52px;height:52px;border-radius:12px;object-fit:cover;border:1px solid var(--line);flex-shrink:0;display:block}
+  .hero-cov{width:96px;height:96px;border-radius:20px;object-fit:cover;border:1px solid var(--line);display:block;margin:0 auto 14px}
+  .sub .nm{font-family:var(--disp);font-weight:900;font-size:.8rem;color:var(--dim);min-width:23px;flex-shrink:0;font-variant-numeric:tabular-nums;text-align:center}
+  .sub:hover .nm{color:#fff}
+  .aqui{display:inline-block;background:#fff;color:#000;font-family:var(--disp);font-weight:900;font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-left:7px;vertical-align:middle}
+  .bajar{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:20px}
+  .bajar .int{color:var(--mut);font-size:.87rem;margin:-4px 0 13px}
+  .bajar .fila{background:var(--panel)}
+  .bajar .fila:last-of-type{margin-bottom:0}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -146,61 +157,56 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
   <div class="tip">💡 <b>¿PC o celular?</b> Cada curso viene en dos versiones: una para computador y otra para celular. Elige la tuya y sigue los módulos en orden.</div>
 
   <div class="bloque">
-    <div class="bcab"><span class="ic">🎥</span><h2>Curso de 0 a Experto</h2><span class="cnt">72 clases</span></div>
+    <div class="bcab"><img class="cov" src="../assets/cover-base.png" alt="" width="52" height="52" loading="lazy"><h2>Curso de 0 a Experto</h2><span class="cnt">72 clases</span></div>
     <details>
       <summary><span class="ic">💻</span><span class="tx"><b>Si editas en COMPUTADOR</b><small>Curso aprende CapCut en PC · 33 clases</small></span><span class="chev">▸</span></summary>
       <div class="lista">
-        <a class="sub" data-l="pc00" target="_blank" rel="noopener"><span class="st"><b>00 Bienvenida a CapCut Mastery PRO</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="pc1" target="_blank" rel="noopener"><span class="st"><b>Módulo 1 · Introducción a CapCut</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="pc2" target="_blank" rel="noopener"><span class="st"><b>Módulo 2 · Fundamentos de Edición</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="pc3" target="_blank" rel="noopener"><span class="st"><b>Módulo 3 · Efectos y Filtros</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="pc4" target="_blank" rel="noopener"><span class="st"><b>Módulo 4 · Texto y Títulos</b><small>5 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="pc5" target="_blank" rel="noopener"><span class="st"><b>Módulo 5 · Técnicas y acciones Avanzadas</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="pc6" target="_blank" rel="noopener"><span class="st"><b>Módulo 6 · Repaso del Proyecto y Exportación</b><small>2 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="pc7" target="_blank" rel="noopener"><span class="st"><b>Módulo 7 · Despedida</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="pcbonos" target="_blank" rel="noopener"><span class="st"><b>#BONOS (enlace externo, no es video)</b><small>1 archivo</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub destacado" data-l="pc" target="_blank" rel="noopener"><span class="st"><b>📂 Abrir la carpeta completa de PC</b><small>las 33 clases juntas</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc00" target="_blank" rel="noopener"><span class="nm">00</span><span class="st"><b>Bienvenida a CapCut Mastery PRO<span class="aqui">empieza aquí</span></b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc1" target="_blank" rel="noopener"><span class="nm">01</span><span class="st"><b>Introducción a CapCut</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc2" target="_blank" rel="noopener"><span class="nm">02</span><span class="st"><b>Fundamentos de Edición</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc3" target="_blank" rel="noopener"><span class="nm">03</span><span class="st"><b>Efectos y Filtros</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc4" target="_blank" rel="noopener"><span class="nm">04</span><span class="st"><b>Texto y Títulos</b><small>5 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc5" target="_blank" rel="noopener"><span class="nm">05</span><span class="st"><b>Técnicas y acciones Avanzadas</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc6" target="_blank" rel="noopener"><span class="nm">06</span><span class="st"><b>Repaso del Proyecto y Exportación</b><small>2 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc7" target="_blank" rel="noopener"><span class="nm">07</span><span class="st"><b>Despedida</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pcbonos" target="_blank" rel="noopener"><span class="nm">+</span><span class="st"><b>#BONOS (enlace externo, no es video)</b><small>1 archivo</small></span><span class="go">ABRIR ▸</span></a>
       </div>
     </details>
     <details>
       <summary><span class="ic">📱</span><span class="tx"><b>Si editas en CELULAR</b><small>Curso aprende CapCut en móvil · 39 clases</small></span><span class="chev">▸</span></summary>
       <div class="lista">
-        <a class="sub" data-l="mov1" target="_blank" rel="noopener"><span class="st"><b>Módulo 1 · Conociendo la interfaz</b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="mov2" target="_blank" rel="noopener"><span class="st"><b>Módulo 2 · Herramientas para videos cortos</b><small>15 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="mov3" target="_blank" rel="noopener"><span class="st"><b>Módulo 3 · Proyectos completos paso a paso</b><small>7 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="mov4" target="_blank" rel="noopener"><span class="st"><b>Módulo 4 · Hacks y otras técnicas</b><small>13 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub destacado" data-l="mov" target="_blank" rel="noopener"><span class="st"><b>📂 Abrir la carpeta completa de móvil</b><small>las 39 clases juntas</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="mov1" target="_blank" rel="noopener"><span class="nm">01</span><span class="st"><b>Conociendo la interfaz<span class="aqui">empieza aquí</span></b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="mov2" target="_blank" rel="noopener"><span class="nm">02</span><span class="st"><b>Herramientas para videos cortos</b><small>15 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="mov3" target="_blank" rel="noopener"><span class="nm">03</span><span class="st"><b>Proyectos completos paso a paso</b><small>7 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="mov4" target="_blank" rel="noopener"><span class="nm">04</span><span class="st"><b>Hacks y otras técnicas</b><small>13 clases</small></span><span class="go">ABRIR ▸</span></a>
       </div>
     </details>
-    <div class="fila"><span class="ic">📁</span><span class="tx"><b>Abrir el curso completo</b><small>las dos versiones juntas</small></span><a class="btn" data-l="todo" target="_blank" rel="noopener">ABRIR TODO ▸</a></div>
   </div>
 
   <div class="bloque">
-    <div class="bcab"><span class="ic">🎁</span><h2>Bono: Viral Cinematics</h2><span class="cnt">32 clases</span></div>
+    <div class="bcab"><img class="cov" src="../assets/cover-cin.png" alt="" width="52" height="52" loading="lazy"><h2>Bono: Viral Cinematics</h2><span class="cnt">32 clases</span></div>
     <details>
       <summary><span class="ic">🎬</span><span class="tx"><b>Ver módulo por módulo</b><small>5 secciones</small></span><span class="chev">▸</span></summary>
       <div class="lista">
-        <a class="sub" data-l="cin1" target="_blank" rel="noopener"><span class="st"><b>01 Mentalidad</b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cin2" target="_blank" rel="noopener"><span class="st"><b>02 Organización y Preparación</b><small>2 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cin3" target="_blank" rel="noopener"><span class="st"><b>03 Filmmaking</b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cin4" target="_blank" rel="noopener"><span class="st"><b>04 Algoritmia</b><small>3 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="cin1" target="_blank" rel="noopener"><span class="nm">01</span><span class="st"><b>Mentalidad<span class="aqui">empieza aquí</span></b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="cin2" target="_blank" rel="noopener"><span class="nm">02</span><span class="st"><b>Organización y Preparación</b><small>2 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="cin3" target="_blank" rel="noopener"><span class="nm">03</span><span class="st"><b>Filmmaking</b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="cin4" target="_blank" rel="noopener"><span class="nm">04</span><span class="st"><b>Algoritmia</b><small>3 clases</small></span><span class="go">ABRIR ▸</span></a>
         <details class="anidado">
           <summary><span class="ic">✂️</span><span class="tx"><b>05 CapCut</b><small>19 clases + 3 PDF</small></span><span class="chev">▸</span></summary>
           <div class="lista">
-        <a class="sub" data-l="cc1" target="_blank" rel="noopener"><span class="st"><b>01 Primeros Pasos en CapCut</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cc2" target="_blank" rel="noopener"><span class="st"><b>02 Edición Profesional en CapCut</b><small>9 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cc3" target="_blank" rel="noopener"><span class="st"><b>03 Textos y Subtítulos en CapCut</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cc4" target="_blank" rel="noopener"><span class="st"><b>04 Música, Audios y SFX</b><small>1 clase + 1 PDF</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cc5" target="_blank" rel="noopener"><span class="st"><b>05 Estrategia de contenido</b><small>3 clases + 1 PDF</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cc6" target="_blank" rel="noopener"><span class="st"><b>06 Análisis de mis videos virales</b><small>3 clases</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cc7" target="_blank" rel="noopener"><span class="st"><b>07 Monetización</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
-        <a class="sub" data-l="cc8" target="_blank" rel="noopener"><span class="st"><b>08 Tips y Consejos (PDF de Premiere Pro)</b><small>1 PDF</small></span><span class="go">ABRIR ▸</span></a>
-            <a class="sub destacado" data-l="cc" target="_blank" rel="noopener"><span class="st"><b>📂 Abrir la carpeta 05 CapCut</b><small>las 19 clases juntas</small></span><span class="go">ABRIR ▸</span></a>
+            <a class="sub" data-l="cc1" target="_blank" rel="noopener"><span class="nm">01</span><span class="st"><b>Primeros Pasos en CapCut<span class="aqui">empieza aquí</span></b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+            <a class="sub" data-l="cc2" target="_blank" rel="noopener"><span class="nm">02</span><span class="st"><b>Edición Profesional en CapCut</b><small>9 clases</small></span><span class="go">ABRIR ▸</span></a>
+            <a class="sub" data-l="cc3" target="_blank" rel="noopener"><span class="nm">03</span><span class="st"><b>Textos y Subtítulos en CapCut</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+            <a class="sub" data-l="cc4" target="_blank" rel="noopener"><span class="nm">04</span><span class="st"><b>Música, Audios y SFX</b><small>1 clase + 1 PDF</small></span><span class="go">ABRIR ▸</span></a>
+            <a class="sub" data-l="cc5" target="_blank" rel="noopener"><span class="nm">05</span><span class="st"><b>Estrategia de contenido</b><small>3 clases + 1 PDF</small></span><span class="go">ABRIR ▸</span></a>
+            <a class="sub" data-l="cc6" target="_blank" rel="noopener"><span class="nm">06</span><span class="st"><b>Análisis de mis videos virales</b><small>3 clases</small></span><span class="go">ABRIR ▸</span></a>
+            <a class="sub" data-l="cc7" target="_blank" rel="noopener"><span class="nm">07</span><span class="st"><b>Monetización</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+            <a class="sub" data-l="cc8" target="_blank" rel="noopener"><span class="nm">08</span><span class="st"><b>Tips y Consejos (PDF de Premiere Pro)</b><small>1 PDF</small></span><span class="go">ABRIR ▸</span></a>
           </div>
         </details>
       </div>
     </details>
-    <div class="fila"><span class="ic">📁</span><span class="tx"><b>Abrir el bono completo</b><small>algoritmo, filmmaking y monetización</small></span><a class="btn" data-l="cin" target="_blank" rel="noopener">ABRIR TODO ▸</a></div>
     <div class="nota">📄 El PDF de <b>08 Tips y Consejos</b> es de Premiere Pro, no de CapCut: va de regalo como material extra.</div>
   </div>
 
@@ -214,6 +220,16 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
     <div class="fila"><span class="ic">📱</span><span class="tx"><b>CapCut Móvil</b><small>Android / iPhone · 2 documentos</small></span><a class="btn" data-l="appmov" target="_blank" rel="noopener">ABRIR ▸</a></div>
     <div class="fila"><span class="ic">💻</span><span class="tx"><b>CapCut PC</b><small>Windows / Mac · 1 video + 1 documento</small></span><a class="btn" data-l="apppc" target="_blank" rel="noopener">ABRIR ▸</a></div>
     <div class="nota">⚠️ <b>IMPORTANTE:</b> estas carpetas traen los documentos con las instrucciones, no el instalador. Léelos completos: ahí te explican paso a paso dónde descargar, cómo instalar y cómo activar la app sin problemas.</div>
+  </div>
+
+  <div class="bajar">
+    <div class="bcab"><span class="ic">⬇️</span><h2>¿Prefieres bajarlo todo de una?</h2><span class="cnt">carpetas completas</span></div>
+    <p class="int">Aquí están las carpetas grandes de Drive, todas juntas. Si prefieres ir clase por clase, súbete a los módulos de arriba.</p>
+    <div class="fila"><span class="ic">📁</span><span class="tx"><b>Todo el curso de 0 a Experto</b><small>las versiones de PC y de celular juntas</small></span><a class="btn" data-l="todo" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="fila"><span class="ic">💻</span><span class="tx"><b>Curso completo · versión PC</b><small>las 33 clases juntas</small></span><a class="btn" data-l="pc" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="fila"><span class="ic">📱</span><span class="tx"><b>Curso completo · versión celular</b><small>las 39 clases juntas</small></span><a class="btn" data-l="mov" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="fila"><span class="ic">🎁</span><span class="tx"><b>Bono Viral Cinematics completo</b><small>algoritmo, filmmaking y monetización</small></span><a class="btn" data-l="cin" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="fila"><span class="ic">✂️</span><span class="tx"><b>Carpeta 05 CapCut del bono</b><small>las 19 clases juntas</small></span><a class="btn" data-l="cc" target="_blank" rel="noopener">ABRIR ▸</a></div>
   </div>
 
   <div class="soporte">
@@ -267,6 +283,5 @@ wa:"bWFpbHRvOmFjY2Vzby5lZGljaW9ucHJvQGdtYWlsLmNvbT9zdWJqZWN0PVByb2JsZW1hJTIwY29u
 };
 document.querySelectorAll("[data-l]").forEach(function(e){e.href=atob(L[e.dataset.l])});
 </script>
-
 </body>
 </html>
