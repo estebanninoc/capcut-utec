@@ -399,15 +399,15 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
           <input type="checkbox">
           <span class="bx"></span>
           <span class="bt">🔥 <b>Pack 87 Efectos Virales</b><small>87 tutoriales, un efecto por clase (6.95 GB)</small></span>
-          <span class="bp" id="bp-fx">+$1.99</span>
+          <span class="bp" id="bp-fx"><s>$9.99</s> +$1.99</span>
         </label>
         <label class="bump" id="bump-cin">
           <input type="checkbox">
           <span class="bx"></span>
           <span class="bt">🎁 <b>Viral Cinematics</b><small>32 clases: algoritmo, estrategia y monetización</small></span>
-          <span class="bp" id="bp-cin">+$1.99</span>
+          <span class="bp" id="bp-cin"><s>$9.99</s> +$1.99</span>
         </label>
-        <div class="bump-nota" id="bump-nota">Marca los dos y te llevas <b>TODO (192 clases) por $12.99</b>: ahorras $1</div>
+        <div class="bump-nota" id="bump-nota">Marca los dos y te llevas <b>TODO (192 clases) por $12.99</b> — ahorras $40.29</div>
       </div>
       <a href="https://buy.stripe.com/7sY8wO5bocIZaiVfyOdwc00" class="btn big" id="btn-pago">Quiero mi acceso ahora · $9.99 →</a>
       <div class="cta-note">Pago seguro con Stripe · Acceso inmediato tras confirmar</div>
@@ -542,6 +542,9 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
       return Math.round(Math.ceil(n/s)*s*100)/100;
     }
     function precio(k){ return MON?fnum(MON.t[PR[k]]):"$"+PR[k]; }
+    function vAntes(k){ var curso=MON?redUp(MON.t['9.99']/0.3):33.30; var bono=MON?MON.t['9.99']:9.99; var n=(k==='base')?curso:(k==='todo')?curso+2*bono:curso+bono; return Math.round(n*100)/100; }
+    function money(n){ return MON?fnum(n):'$'+(Math.round(n*100)/100).toFixed(2); }
+    function ahorro(k){ var pv=MON?MON.t[PR[k]]:parseFloat(PR[k]); return Math.round((vAntes(k)-pv)*100)/100; }
 
     var fx=document.querySelector('#bump-fx input'),cin=document.querySelector('#bump-cin input');
     var btn=document.getElementById('btn-pago'),big=document.getElementById('precio-grande'),nota=document.getElementById('bump-nota');
@@ -553,24 +556,25 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
       big.innerHTML= MON ? p : '$'+PR[k]+' <span style="font-size:1.3rem;color:var(--mut)">USD</span>';
       var bb=document.getElementById('buybar-precio'); if(bb) bb.textContent=p;
       var bba=document.getElementById('buybar-antes');
-      if(bba){ bba.textContent = MON ? fnum(redUp(MON.t[PR[k]]/0.3)) : '$'+(parseFloat(PR[k])/0.3).toFixed(2); }
+      if(bba){ bba.textContent = MON ? fnum(vAntes(k)) : '$'+vAntes(k).toFixed(2); }
       var ant=document.getElementById('precio-antes');
       if(ant){
-        if(MON){ ant.textContent=fnum(redUp(MON.t[PR[k]]/0.3)); }
-        else{ ant.textContent='$'+(parseFloat(PR[k])/0.3).toFixed(2)+' USD'; }
+        if(MON){ ant.textContent=fnum(vAntes(k)); }
+        else{ ant.textContent='$'+vAntes(k).toFixed(2)+' USD'; }
       }
       document.getElementById('bump-fx').classList.toggle('on',fx.checked);
       document.getElementById('bump-cin').classList.toggle('on',cin.checked);
       var pTodo = MON?fnum(MON.t['12.99']):'$12.99';
-      var ah = MON?('ahorras '+fnum(Math.round((MON.t['11.98']+MON.t['11.98']-MON.t['9.99']-MON.t['12.99'])*100)/100)):'ahorras $1';
+      var ahTodo = 'ahorras '+money(ahorro('todo'));
       nota.innerHTML = (k==='todo')
-        ? '🎉 Te llevas <b>TODO: las 192 clases por '+pTodo+'</b> ('+ah+')'
-        : 'Marca los dos y te llevas <b>TODO (192 clases) por '+pTodo+'</b>: '+ah;
+        ? '🎉 Te llevas <b>TODO: las 192 clases por '+pTodo+'</b> ('+ahTodo+')'
+        : 'Marca los dos y te llevas <b>TODO (192 clases) por '+pTodo+'</b> — '+ahTodo;
     }
     if(MON){
       var h=document.getElementById('btn-hero'); if(h) h.textContent='Empezar hoy · '+precio('base')+' →';
-      var bf=document.getElementById('bp-fx'); if(bf) bf.textContent='+'+fnum(Math.round((MON.t['11.98']-MON.t['9.99'])*100)/100);
-      var bc=document.getElementById('bp-cin'); if(bc) bc.textContent='+'+fnum(Math.round((MON.t['11.98']-MON.t['9.99'])*100)/100);
+      var addon=Math.round((MON.t['11.98']-MON.t['9.99'])*100)/100;
+      var bf=document.getElementById('bp-fx'); if(bf) bf.innerHTML='<s>'+fnum(MON.t['9.99'])+'</s> +'+fnum(addon);
+      var bc=document.getElementById('bp-cin'); if(bc) bc.innerHTML='<s>'+fnum(MON.t['9.99'])+'</s> +'+fnum(addon);
     }
     fx.addEventListener('change',up); cin.addEventListener('change',up);
     up();
