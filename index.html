@@ -479,7 +479,7 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
       var hid='thaP4pR_3oQ';
       var hf=document.createElement('iframe');
       hf.className='yt-hero';
-      hf.src='https://www.youtube-nocookie.com/embed/'+hid+'?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1&start=3';
+      hf.src='https://www.youtube-nocookie.com/embed/'+hid+'?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1&start=5';
       hf.allow='autoplay; encrypted-media'; hf.tabIndex=-1; hf.setAttribute('aria-hidden','true');
       hpv.appendChild(hf);
       hf.addEventListener('load',function(){ try{hf.contentWindow.postMessage('{"event":"listening"}','*');}catch(e){} });
@@ -487,7 +487,7 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
       window.addEventListener('message',function(ev){
         if(ev.source!==hf.contentWindow) return;
         var d; try{ d=JSON.parse(ev.data);}catch(e){return;}
-        if(d.event==='onStateChange' && d.info===0){ try{ hf.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[3,true]}','*'); hf.contentWindow.postMessage('{"event":"command","func":"playVideo","args":[]}','*'); }catch(e){} }
+        if(d.event==='onStateChange' && d.info===0){ try{ hf.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[5,true]}','*'); hf.contentWindow.postMessage('{"event":"command","func":"playVideo","args":[]}','*'); }catch(e){} }
       });
     })();
   })();
