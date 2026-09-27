@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Tu acceso · Curso Editor CapCut PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg:#000; --panel:#101012; --panel2:#17171a; --panel3:#1d1d21; --line:#28282d;
+    --tx:#fff; --mut:#9a9aa3; --dim:#6e6e77; --max:720px;
+    --disp:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:44px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  h1,h2{font-family:var(--disp);font-weight:900;letter-spacing:-.035em;line-height:1.12}
+  a{color:inherit;text-decoration:none}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:900;font-size:1.1rem;letter-spacing:-.04em}
+  .logo .mark{width:28px;height:28px;border-radius:7px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .logo .mark img{width:18px;height:18px;display:block}
+  .logo .sub{font-weight:700;font-size:.68rem;letter-spacing:.14em;color:var(--mut);text-transform:uppercase;align-self:flex-end;padding-bottom:2px}
+  .navtag{font-size:.74rem;font-weight:700;color:#4ade80;background:rgba(0,255,100,.08);border:1px solid rgba(0,255,100,.25);border-radius:999px;padding:5px 12px}
+
+  header{padding:36px 0 8px;text-align:center}
+  header h1{font-size:clamp(1.6rem,5.5vw,2.15rem);margin-bottom:9px}
+  header p{color:var(--mut);font-size:.96rem;max-width:470px;margin:0 auto}
+  header p b{color:#fff}
+
+  .avisos{margin:20px 0 0;display:grid;gap:8px}
+  .aviso{display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.87rem;color:var(--mut)}
+  .aviso b{color:#fff}
+  .tip{margin-top:14px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:.9rem;color:var(--mut);text-align:center}
+  .tip b{color:#fff}
+
+  .bloque{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:20px}
+  .bcab{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .bcab .ic{font-size:1.5rem;flex-shrink:0}
+  .bcab h2{font-size:1.12rem;flex:1;min-width:0}
+  .bcab .cnt{font-size:.72rem;font-weight:800;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+
+  .fila{display:flex;align-items:center;gap:12px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:9px;transition:border-color .15s}
+  .fila:hover{border-color:#4a4a52}
+  .fila .ic{font-size:1.3rem;flex-shrink:0}
+  .fila .tx{flex:1;min-width:0}
+  .fila .tx b{display:block;font-size:.96rem;line-height:1.25}
+  .fila .tx small{color:var(--mut);font-size:.79rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-family:var(--disp);font-weight:800;font-size:.87rem;padding:10px 20px;border-radius:999px;flex-shrink:0;transition:transform .13s ease}
+  .btn:hover{transform:translateY(-2px)}
+
+  details{background:var(--panel2);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+  details[open]{border-color:#3a3a42}
+  summary{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;list-style:none;user-select:none}
+  summary::-webkit-details-marker{display:none}
+  summary:hover{background:var(--panel3)}
+  summary .ic{font-size:1.3rem;flex-shrink:0}
+  summary .tx{flex:1;min-width:0}
+  summary .tx b{display:block;font-size:.96rem;line-height:1.25}
+  summary .tx small{color:var(--mut);font-size:.79rem}
+  .chev{width:26px;height:26px;border-radius:50%;background:#26262c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0;transition:transform .2s ease}
+  details[open] .chev{transform:rotate(90deg);background:#fff;color:#000}
+  .lista{padding:2px 12px 12px}
+  .sub{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:11px;border:1px solid transparent;transition:background .13s,border-color .13s}
+  .sub:hover{background:var(--panel3);border-color:var(--line)}
+  .sub .st{flex:1;min-width:0}
+  .sub .st b{display:block;font-size:.9rem;font-weight:600;line-height:1.3}
+  .sub .st small{color:var(--dim);font-size:.76rem}
+  .go{font-family:var(--disp);font-weight:800;font-size:.76rem;color:#fff;background:#2c2c33;padding:6px 13px;border-radius:999px;flex-shrink:0}
+  .sub:hover .go{background:#fff;color:#000}
+
+  .destacado{margin-top:6px;border-top:1px solid var(--line);border-radius:0 0 11px 11px;padding-top:13px}
+  .destacado .st b{color:var(--mut);font-weight:600}
+  .nota{margin-top:10px;font-size:.83rem;color:var(--mut);background:var(--panel2);border:1px dashed #3a3a40;border-radius:12px;padding:11px 14px}
+  .nota b{color:#fff}
+  .anidado{margin:9px 0 0;border-color:#33333a}
+
+  .soporte{margin-top:24px;text-align:center;background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:24px}
+  .soporte p{color:var(--mut);font-size:.92rem;margin-bottom:14px}
+  footer{margin-top:32px;text-align:center;color:var(--mut);font-size:.82rem}
+  .disc{color:#5c5c64;font-size:.72rem;max-width:600px;margin:12px auto 0;line-height:1.5}
+
+  @media(max-width:540px){
+    .fila{flex-wrap:wrap}
+    .fila .btn{width:100%;order:3;margin-top:2px}
+    .bcab .cnt{display:none}
+  }
+
+  /* --- formato 2026-09-23: portadas, modulos numerados, bajar-todo al pie --- */
+  .bcab .cov{width:52px;height:52px;border-radius:12px;object-fit:cover;border:1px solid var(--line);flex-shrink:0;display:block}
+  .hero-cov{width:96px;height:96px;border-radius:20px;object-fit:cover;border:1px solid var(--line);display:block;margin:0 auto 14px}
+  .sub .nm{font-family:var(--disp);font-weight:900;font-size:.8rem;color:var(--dim);min-width:23px;flex-shrink:0;font-variant-numeric:tabular-nums;text-align:center}
+  .sub:hover .nm{color:#fff}
+  .aqui{display:inline-block;background:#fff;color:#000;font-family:var(--disp);font-weight:900;font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-left:7px;vertical-align:middle}
+  .bajar{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:20px}
+  .bajar .int{color:var(--mut);font-size:.87rem;margin:-4px 0 13px}
+  .bajar .fila{background:var(--panel)}
+  .bajar .fila:last-of-type{margin-bottom:0}
+</style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1040771825513533');
+fbq('track','PageView');
+(function(){
+  try{
+    var deStripe = /stripe\.com/.test(document.referrer || '');
+    var marca = 'fbqp_m8d3';
+    if (deStripe && !sessionStorage.getItem(marca)) {
+      sessionStorage.setItem(marca,'1');
+      fbq('track','Purchase',{value:11.98,currency:'USD',
+        content_name:'Curso CapCut + 87 Efectos',content_type:'product',content_ids:['m8d3']});
+    }
+  }catch(e){}
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></noscript>
+<!-- /Meta Pixel -->
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <span class="mark"><img src="../assets/capcut-icon.png" alt="CapCut" width="18" height="18"></span>
+      CapCut<span class="sub">PRO</span>
+    </div>
+    <span class="navtag">✓ Acceso activo</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header>
+    <h1>🎥 Curso CapCut + 87 Efectos</h1>
+    <p>Tu curso completo <b>más el Pack de 87 Efectos Virales</b>, módulo por módulo. Toca el que quieras ver: se abre en una pestaña nueva.</p>
+  </header>
+
+  <div class="avisos">
+    <div class="aviso"><span>⬇️</span><span><b>DESCARGA los videos antes de verlos.</b> Toca el botón de descarga (arriba a la derecha en Drive). Son clases largas y pesan mucho: en línea no siempre reproducen bien.</span></div>
+    <div class="aviso"><span>💻</span><span><b>¿Un archivo no abre en el celular?</b> Ábrelo en el computador. Los archivos grandes a veces no cargan en el teléfono.</span></div>
+    <div class="aviso"><span>✅</span><span><b>Todo es tuyo y todo es descargable.</b> No se vence nunca.</span></div>
+  </div>
+
+  <div class="tip">💡 <b>¿PC o celular?</b> Cada curso viene en dos versiones: una para computador y otra para celular. Elige la tuya y sigue los módulos en orden.</div>
+
+  <div class="bloque">
+    <div class="bcab"><img class="cov" src="../assets/cover-base.png" alt="" width="52" height="52" loading="lazy"><h2>Curso de 0 a Experto</h2><span class="cnt">72 clases</span></div>
+    <details>
+      <summary><span class="ic">💻</span><span class="tx"><b>Si editas en COMPUTADOR</b><small>Curso aprende CapCut en PC · 33 clases</small></span><span class="chev">▸</span></summary>
+      <div class="lista">
+        <a class="sub" data-l="pc00" target="_blank" rel="noopener"><span class="nm">00</span><span class="st"><b>Bienvenida a CapCut Mastery PRO<span class="aqui">empieza aquí</span></b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc1" target="_blank" rel="noopener"><span class="nm">01</span><span class="st"><b>Introducción a CapCut</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc2" target="_blank" rel="noopener"><span class="nm">02</span><span class="st"><b>Fundamentos de Edición</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc3" target="_blank" rel="noopener"><span class="nm">03</span><span class="st"><b>Efectos y Filtros</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc4" target="_blank" rel="noopener"><span class="nm">04</span><span class="st"><b>Texto y Títulos</b><small>5 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc5" target="_blank" rel="noopener"><span class="nm">05</span><span class="st"><b>Técnicas y acciones Avanzadas</b><small>6 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc6" target="_blank" rel="noopener"><span class="nm">06</span><span class="st"><b>Repaso del Proyecto y Exportación</b><small>2 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pc7" target="_blank" rel="noopener"><span class="nm">07</span><span class="st"><b>Despedida</b><small>1 clase</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="pcbonos" target="_blank" rel="noopener"><span class="nm">+</span><span class="st"><b>#BONOS (enlace externo, no es video)</b><small>1 archivo</small></span><span class="go">ABRIR ▸</span></a>
+      </div>
+    </details>
+    <details>
+      <summary><span class="ic">📱</span><span class="tx"><b>Si editas en CELULAR</b><small>Curso aprende CapCut en móvil · 39 clases</small></span><span class="chev">▸</span></summary>
+      <div class="lista">
+        <a class="sub" data-l="mov1" target="_blank" rel="noopener"><span class="nm">01</span><span class="st"><b>Conociendo la interfaz<span class="aqui">empieza aquí</span></b><small>4 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="mov2" target="_blank" rel="noopener"><span class="nm">02</span><span class="st"><b>Herramientas para videos cortos</b><small>15 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="mov3" target="_blank" rel="noopener"><span class="nm">03</span><span class="st"><b>Proyectos completos paso a paso</b><small>7 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="mov4" target="_blank" rel="noopener"><span class="nm">04</span><span class="st"><b>Hacks y otras técnicas</b><small>13 clases</small></span><span class="go">ABRIR ▸</span></a>
+      </div>
+    </details>
+  </div>
+
+  <div class="bloque">
+    <div class="bcab"><img class="cov" src="../assets/cover-fx.png" alt="" width="52" height="52" loading="lazy"><h2>Pack 87 Efectos Virales</h2><span class="cnt">87 clases</span></div>
+    <details>
+      <summary><span class="ic">🔥</span><span class="tx"><b>Ver por versión</b><small>celular y computador por separado</small></span><span class="chev">▸</span></summary>
+      <div class="lista">
+        <a class="sub" data-l="avcel" target="_blank" rel="noopener"><span class="nm">📱</span><span class="st"><b>Edición Avanzada en CELULAR<span class="aqui">empieza aquí</span></b><small>54 clases</small></span><span class="go">ABRIR ▸</span></a>
+        <a class="sub" data-l="avpc" target="_blank" rel="noopener"><span class="nm">💻</span><span class="st"><b>Edición Avanzada en PC</b><small>33 clases</small></span><span class="go">ABRIR ▸</span></a>
+      </div>
+    </details>
+  </div>
+
+  <div class="bloque">
+    <div class="bcab"><span class="ic">📄</span><h2>Material de apoyo</h2><span class="cnt">PDF</span></div>
+    <div class="fila"><span class="ic">📄</span><span class="tx"><b>Guía de Edición Dopamínica</b><small>PDF · 4,4 MB</small></span><a class="btn" data-l="guia" target="_blank" rel="noopener">ABRIR ▸</a></div>
+  </div>
+
+  <div class="bloque">
+    <div class="bcab"><span class="ic">⚙️</span><h2>App CapCut PRO y configuración</h2><span class="cnt">Instrucciones</span></div>
+    <div class="fila"><span class="ic">📱</span><span class="tx"><b>CapCut Móvil</b><small>Android / iPhone · 2 documentos</small></span><a class="btn" data-l="appmov" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="fila"><span class="ic">💻</span><span class="tx"><b>CapCut PC</b><small>Windows / Mac · 1 video + 1 documento</small></span><a class="btn" data-l="apppc" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="nota">⚠️ <b>IMPORTANTE:</b> estas carpetas traen los documentos con las instrucciones, no el instalador. Léelos completos: ahí te explican paso a paso dónde descargar, cómo instalar y cómo activar la app sin problemas.</div>
+  </div>
+
+  <div class="bajar">
+    <div class="bcab"><span class="ic">⬇️</span><h2>¿Prefieres bajarlo todo de una?</h2><span class="cnt">carpetas completas</span></div>
+    <p class="int">Aquí están las carpetas grandes de Drive, todas juntas. Si prefieres ir clase por clase, súbete a los módulos de arriba.</p>
+    <div class="fila"><span class="ic">📁</span><span class="tx"><b>Todo el curso de 0 a Experto</b><small>las versiones de PC y de celular juntas</small></span><a class="btn" data-l="todo" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="fila"><span class="ic">💻</span><span class="tx"><b>Curso completo · versión PC</b><small>las 33 clases juntas</small></span><a class="btn" data-l="pc" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="fila"><span class="ic">📱</span><span class="tx"><b>Curso completo · versión celular</b><small>las 39 clases juntas</small></span><a class="btn" data-l="mov" target="_blank" rel="noopener">ABRIR ▸</a></div>
+    <div class="fila"><span class="ic">🔥</span><span class="tx"><b>Pack 87 Efectos Virales completo</b><small>un efecto por clase</small></span><a class="btn" data-l="av" target="_blank" rel="noopener">ABRIR ▸</a></div>
+  </div>
+
+  <div class="soporte">
+    <p>¿Algo no te abre o tienes un problema con una descarga?</p>
+    <a class="btn" data-l="wa">✉️ ESCRIBIR A SOPORTE</a><br/><small style="opacity:.7;font-size:12px">acceso.edicionpro@gmail.com</small>
+  </div>
+
+  <footer>
+    <p>Curso Editor CapCut PRO · Aprende. Emprende. Transforma.</p>
+    <p class="disc">CapCut es una marca de sus respectivos dueños. Este es un curso educativo independiente sobre cómo usar la aplicación; no está afiliado, patrocinado ni respaldado por CapCut / ByteDance.</p>
+  </footer>
+
+</div>
+
+<script>
+</script>
+<script>
+/* ══ PORTON DE ENTREGA — obra candado-zonas-entrega, 2026-09-27 ═══════════════
+   ORDEN DE ESTEBAN (textual): "arregla eso ya hermano y que no vuvleva a pasar".
+
+   ANTES: esta pagina traia los 23 destinos de Drive en base64 en un mapa `L`
+   dentro del HTML. `curl https://edicion-pro.com/m8d3/ | base64 -d` los sacaba todos sin
+   pagar un peso. Base64 no es candado: es un disfraz.
+
+   AHORA: la pagina NO tiene ni un destino. Los pide, y el servidor solo se los
+   da si Stripe confirma que esa sesion esta PAGADA EN LA CUENTA DE ESTA TIENDA y
+   que el nivel que compro cubre esta zona. Las 4 rejas viven en el servidor
+   (formato, pertenencia, pago, conjuntos) porque una reja en el navegador la
+   borra cualquiera con F12.
+
+   EL TOKEN DE ABAJO NO ES UN SECRETO y no pretende serlo: esta en el fuente de
+   una pagina publica. Frena el escaneo generico para que no nos gaste llamadas a
+   Stripe. El candado real es Stripe, y su clave nunca sale del servidor.
+
+   FALLA CERRADO: sin session_id, con formato malo, sesion impaga, de otra cuenta,
+   de otro nivel, endpoint caido o timeout => los enlaces se quedan MUERTOS (nacen
+   sin href) y se muestra el aviso con el soporte. Jamas "por si acaso te lo abro".
+
+   REVERSA DE 1 LINEA:  var EZ_URL = '';
+     (la pagina queda cerrada y muda; para volver al estado anterior se restaura
+      el index.html del backup de la obra)                                      */
+var EZ_URL = 'https://api.melamina.pro:8444/accesos';
+var EZ_K   = 'qwS6iu4Kv7m2DkX4DJsslYZ7nw5fQUDg';
+var EZ_T   = 'capcut';
+var EZ_Z   = 'm8d3';
+var EZ_SOP = 'Escribinos por WhatsApp al <b><a href="https://wa.me/13104976059?text=Hola%2C%20compr%C3%A9%20el%20curso%20CapCut%20PRO%20y%20necesito%20ayuda%20con%20mi%20acceso" style="color:#fde68a">+1 (310) 497-6059</a></b> o a <b>acceso.edicionpro@gmail.com</b> con el correo con el que pagaste y te lo abrimos a mano.';
+
+(function(){
+  var d = document, ID = 'ez-aviso';
+  function aviso(txt){
+    /* Un mensaje HUMANO, no un codigo de error: el que llega aca compro y quiere
+       su curso. El motivo tecnico va a la consola, no a su cara. */
+    var v = d.getElementById(ID);
+    if(!v){
+      v = d.createElement('div'); v.id = ID;
+      v.style.cssText = 'margin:18px auto;max-width:720px;padding:16px 18px;'+
+        'border:1px solid #b45309;background:#1c1917;color:#fde68a;border-radius:14px;'+
+        'font:600 15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;'+
+        'text-align:center';
+      var w = d.querySelector('header') || d.body.firstChild;
+      if(w && w.parentNode){ w.parentNode.insertBefore(v, w.nextSibling); }
+      else { d.body.insertBefore(v, d.body.firstChild); }
+    }
+    v.innerHTML = txt + '<br><br>' + EZ_SOP;
+  }
+  function cerrado(motivo){
+    /* Los enlaces YA estan muertos (nacen sin href). No hay nada que apagar. */
+    try{ if(window.console) console.log('entrega cerrada:', motivo); }catch(e){}
+    var m = {
+      'falta':     'Este enlace está incompleto: le falta tu <b>código de compra</b>.<br>Abrí el enlace tal como te llegó en el correo de compra, completo.',
+      'formato':   'Este enlace está incompleto: le falta tu <b>código de compra</b>.<br>Abrí el enlace tal como te llegó en el correo de compra, completo.',
+      'ajena':     'No encontramos tu compra con este código.<br>Puede que sea de otro curso o que el enlace esté cortado.',
+      'sin_pago':  'Tu pago todavía no está confirmado. Si pagaste en efectivo puede tardar unas horas.<br>Volvé a abrir este mismo enlace más tarde.',
+      'otro_nivel':'Este código corresponde a <b>otro paquete</b>, no a este.<br>Abrí el enlace que te llegó en tu correo de compra.',
+      'sin_nivel': 'No pudimos identificar qué paquete compraste.',
+      'red':       'No pudimos verificar tu compra en este momento.<br>Volvé a cargar la página en un minuto.'
+    };
+    aviso(m[motivo] || m['red']);
+  }
+  function pintar(dest){
+    /* El destino se toma del servidor por clave. Si una clave no vino, ese enlace
+       se queda muerto: no se inventa una URL ni se adivina. */
+    var n = 0, faltan = 0;
+    [['l','L'],['f','F'],['g','G']].forEach(function(par){
+      d.querySelectorAll('[data-'+par[0]+']').forEach(function(a){
+        var u = dest[par[1] + ':' + a.dataset[par[0]]];
+        if(u){ a.href = u; n++; } else { faltan++; }
+      });
+    });
+    try{ if(window.console) console.log('accesos abiertos:', n, 'sin destino:', faltan); }catch(e){}
+    if(!n){ cerrado('red'); }
+    var v = d.getElementById(ID); if(v && v.parentNode){ v.parentNode.removeChild(v); }
+  }
+  if(!EZ_URL){ return cerrado('red'); }           /* reversa: queda cerrada */
+  var sid = null;
+  try{ sid = new URLSearchParams(location.search).get('session_id'); }catch(e){}
+  /* el MISMO formato que exige el servidor. Lo que no matchea no sale de aca:
+     esa URL la escribe cualquiera y no se le pega un id crudo a Stripe. */
+  if(!sid || !/^cs_live_[A-Za-z0-9]{20,120}$/.test(sid)){ return cerrado('falta'); }
+  aviso('Verificando tu compra…');
+  var listo = false;
+  /* fetch no tiene timeout propio: un endpoint que no contesta dejaria la pagina
+     en "verificando" para siempre. A los 15 s se cierra con mensaje. */
+  var reloj = setTimeout(function(){ if(!listo){ listo = true; cerrado('red'); } }, 15000);
+  var q = '?t=' + encodeURIComponent(EZ_T) + '&z=' + encodeURIComponent(EZ_Z) +
+          '&k=' + encodeURIComponent(EZ_K) + '&sid=' + encodeURIComponent(sid);
+  try{
+    fetch(EZ_URL + q, {cache:'no-store', credentials:'omit'})
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if(listo){ return; } listo = true; clearTimeout(reloj);
+        if(j && j.ok && j.destinos){ pintar(j.destinos); }
+        else { cerrado((j && j.motivo) || 'red'); }
+      })
+      .catch(function(){ if(!listo){ listo = true; clearTimeout(reloj); cerrado('red'); } });
+  }catch(e){ listo = true; clearTimeout(reloj); cerrado('red'); }
+})();
+</script>
+</body>
+</html>
