@@ -247,9 +247,7 @@ fbq('track','PageView');
 document.addEventListener('click',function(ev){
   var a = ev.target.closest ? ev.target.closest('a') : null;
   if(a && a.href && a.href.indexOf('buy.stripe.com')>-1){
-    var precio = (document.getElementById('precio-grande')||{}).textContent||'';
-    var m = precio.replace(/[^0-9.,]/g,'').replace(',','.');
-    fbq('track','InitiateCheckout',{value:parseFloat(m)||9.99,currency:'USD'});
+    fbq('track','InitiateCheckout',{value:parseFloat(window.__precioUSD)||9.99,currency:'USD'});
   }
 },true);
 </script>
@@ -560,6 +558,7 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
     var btn=document.getElementById('btn-pago'),big=document.getElementById('precio-grande'),nota=document.getElementById('bump-nota');
     function up(){
       var k = fx.checked&&cin.checked ? 'todo' : fx.checked ? 'fx' : cin.checked ? 'cin' : 'base';
+      window.__precioUSD = PR[k];
       btn.href=conRef(LK[k]);
       var p=precio(k);
       btn.textContent='Quiero mi acceso ahora · '+p+' →';
