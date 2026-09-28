@@ -124,6 +124,28 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1040771825513533');
 fbq('track','PageView');
+(function(){
+  // Purchase por CAPI (obra purchase-capcut, 2026-09-28). El navegador NO dispara
+  // ningun evento de compra: lo manda el SERVIDOR, con el monto REAL de Stripe.
+  // Este token solo sirve para reportar una compra; no abre ningun destino.
+  try{
+    var sid=(new URLSearchParams(location.search)).get('session_id');
+    if(!sid) return;                       // sin sid no hay nada que reportar
+    var marca='pcapi_v4k9_'+sid;
+    if(sessionStorage.getItem(marca)) return;   // el servidor tambien deduplica
+    function ck(n){var m=document.cookie.match('(^|;)\\s*'+n+'=([^;]+)');return m?m[2]:'';}
+    function manda(){
+      sessionStorage.setItem(marca,'1');
+      var u='https://api.melamina.pro:8444/capi?k=jwdzheSeT7dgcHFm85LqMFE_h1p5kpiS&sid='+encodeURIComponent(sid)
+           +'&fbp='+encodeURIComponent(ck('_fbp'))+'&fbc='+encodeURIComponent(ck('_fbc'));
+      navigator.sendBeacon(u);             // fire-and-forget: la pagina no lo espera
+    }
+    // Se le da 1,5 s al pixel para que escriba la cookie _fbp (mejora el
+    // emparejamiento). Si no aparece se manda igual: el servidor tiene el email
+    // de Stripe y el evento sale lo mismo. Medir nunca frena la entrega.
+    if(ck('_fbp')) manda(); else setTimeout(manda,1500);
+  }catch(e){}
+})();
 </script>
 <noscript><img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></noscript>
