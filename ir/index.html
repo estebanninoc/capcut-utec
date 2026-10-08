@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Abriendo tu zona de descargas…</title>
+<style>
+  body{margin:0;background:#0b0b10;color:#f0eef7;font-family:Arial,Helvetica,sans-serif;
+       display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center}
+  .c{padding:28px}
+  .t{font-size:22px;font-weight:900;color:#8b5cf6;margin-bottom:8px}
+  .s{font-size:14px;color:#9aa0a6}
+  a{color:#8b5cf6}
+</style>
+</head>
+<body>
+<div class="c">
+  <div class="t">✓ Pago confirmado</div>
+  <div class="s">Abriendo tu zona de descargas…</div>
+  <p class="s">Si no abre sola, <a id="ir" href="../">toca aquí</a>.</p>
+</div>
+<script>
+/* PUENTE entre Stripe y la zona de descargas de CapCut — obra `puente-capcut`.
+   Calcado de the-game-box/ir/ (leido EN VIVO el 2026-10-08, md5 42d3d776…).
+   Recibe /ir/?z=<zona>&v=<monto>&s={CHECKOUT_SESSION_ID} y hace tres cosas:
+     1. dispara el Purchase del navegador con eventID purchase_<s>
+     2. deduplica por almacenamiento local con clave pur_<s>
+     3. redirige YA a la zona que le toca.
+
+   TRES DESVIOS respecto del molde de Gamebox. Ninguno es adorno; cada uno tapa
+   un agujero MEDIDO el 2026-10-08, y los tres estan en el parte:
+
+   (A) ARRASTRA `session_id` A LA ZONA  ->  `../<z>/?session_id=<s>`
+       Gamebox redirige a `../<z>/` pelado porque Gamebox NO tiene emisor de
+       servidor. CapCut SI: el Purchase que hoy reporta la venta con el monto REAL
+       lo manda `/capi` del :8444, y el beacon que lo llama vive DENTRO de la zona
+       y necesita `?session_id=`. Si este puente redirigiera pelado, el dia que el
+       success_url apunte aca el CAPI de CapCut se queda 100% mudo — exactamente la
+       caida de los commits 212cd11/f934496 del 25-sep (94,6% mudo). Medido hoy:
+       9 de 9 ventas pagadas con session_id produjeron 1 evento CAPI cada una.
+
+   (B) `v` ES OPCIONAL Y NUNCA SE INVENTA UN PISO
+       Gamebox cae a PISO=9.99 cuando `v` no viene: eso FABRICA ingreso que nadie
+       cobro. Aca, sin `v` valido el Purchase sale SIN value ni currency: Meta
+       recibe la conversion y el monto lo pone el evento del servidor, que si lo
+       sabe. Mentir el monto esta prohibido; callarlo es honesto.
+
+   (C) `eventID` SIEMPRE QUE HAYA `s`, y SIN `s` NO SE DISPARA NADA
+       El puente real de Gamebox NO manda eventID (verificado en vivo hoy: no
+       aparece en su codigo servido, al contrario de lo que decia el pliego).
+       Gamebox puede: es emisor unico. CapCut tiene dos emisores y la UNICA cosa
+       que los deduplica es compartir `purchase_<sid>`. Un Purchase sin eventID
+       aca seria un evento que Meta NO puede casar con el del servidor: doble
+       conteo garantizado. Por eso sin `s` este puente redirige y NO reporta.
+
+   LIMITE HONESTO, dicho aca y no escondido: la deduplicacion de navegador no
+   sobrevive a un navegador limpio (ni con sessionStorage ni con localStorage).
+   Quien borre su almacenamiento y vuelva a abrir el enlace con el mismo `s`
+   dispara otro evento de navegador. El unico dedupe que aguanta eso es la marca
+   permanente del servidor, que `/capi` ya tiene. Este puente NO cierra ese hueco
+   y no se declara como si lo cerrara. */
+(function () {
+  "use strict";
+  // Lista blanca: nadie puede usar esta pagina para redirigir a otro sitio.
+  var ZONAS = ["k2f7", "m8d3", "r5t9", "v4k9"];
+  var PIXEL = "1040771825513533";
+
+  function q(n) { try { return new URLSearchParams(location.search).get(n) || ""; } catch (e) { return ""; } }
+
+  var z = q("z");
+  if (ZONAS.indexOf(z) === -1) { z = ""; }
+  var s = q("s");
+  // El formato del sid se valida ACA: lo que no tiene forma de sesion de Stripe
+  // no viaja a la zona y no se usa como clave de dedupe.
+  if (!/^cs_live_[A-Za-z0-9]{20,120}$/.test(s)) { s = ""; }
+
+  var destino = z ? ("../" + z + "/") : "../";
+  if (z && s) { destino += "?session_id=" + encodeURIComponent(s); }  // desvio (A)
+  document.getElementById("ir").href = destino;
+
+  // Sin sid no hay nada que reportar ni con que deduplicar: solo se redirige.
+  var reporta = !!s;                                                   // desvio (C)
+
+  if (reporta) {
+    var k = "pur_" + s, yaFue = false;
+    // localStorage primero (sobrevive al cierre de pestaña, que es el camino real
+    // por el que alguien vuelve a abrir el correo); sessionStorage como respaldo
+    // cuando el navegador bloquea el persistente.
+    try {
+      if (localStorage.getItem(k)) { yaFue = true; } else { localStorage.setItem(k, "1"); }
+    } catch (e) {
+      try {
+        if (sessionStorage.getItem(k)) { yaFue = true; } else { sessionStorage.setItem(k, "1"); }
+      } catch (e2) {}
+    }
+    if (yaFue) { reporta = false; }
+  }
+
+  if (reporta) {
+    !function (f, b, e, v2, n, t, s2) {
+      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v2;
+      s2 = b.getElementsByTagName(e)[0]; s2.parentNode.insertBefore(t, s2);
+    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", PIXEL);
+    fbq("track", "PageView");
+
+    var v = parseFloat(q("v"));
+    var monto = (isFinite(v) && v > 0 && v <= 1000) ? { value: v, currency: "USD" } : {};  // desvio (B)
+    fbq("track", "Purchase", monto, { eventID: "purchase_" + s });
+  }
+
+  setTimeout(function () { location.replace(destino); }, 900);
+})();
+</script>
+</body>
+</html>
