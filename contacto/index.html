@@ -84,7 +84,7 @@
     <label for="c-correo" style="display:block;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px">Correo electrónico <span style="color:#ff6b7a">*</span></label>
     <input id="c-correo" name="correo" type="email" required maxlength="200" autocomplete="email"
       style="width:100%;background:#0c0c0f;border:1px solid #28282d;border-radius:10px;color:#fff;font-family:inherit;font-size:1rem;padding:12px 14px">
-    <small style="color:#6e6e77;font-size:.78rem">Si ya compraste, escribí el mismo correo con el que pagaste: así encontramos la compra al toque.</small>
+    <small style="color:#6e6e77;font-size:.78rem">Si ya compraste, escribe el mismo correo con el que pagaste: así encontramos la compra de inmediato.</small>
   </div>
   <div style="margin-bottom:6px">
     <label for="c-mensaje" style="display:block;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px">Mensaje <span style="color:#ff6b7a">*</span></label>
@@ -104,7 +104,7 @@
 </form>
 <noscript>
   <div class="caja" style="border-color:#6a5a2a">
-    <p style="margin-bottom:0">Este formulario necesita JavaScript. Si está desactivado, escribinos directo a <a href="mailto:acceso.edicionpro@gmail.com">acceso.edicionpro@gmail.com</a> o al WhatsApp <a href="https://wa.me/13104976059">+1 310 497 6059</a>: son los mismos buzones y se responden igual.</p>
+    <p style="margin-bottom:0">Este formulario necesita JavaScript. Si está desactivado, escríbenos directo a <a href="mailto:acceso.edicionpro@gmail.com">acceso.edicionpro@gmail.com</a> o al WhatsApp <a href="https://wa.me/13104976059">+1 310 497 6059</a>: son los mismos buzones y se responden igual.</p>
   </div>
 </noscript>
 
@@ -162,7 +162,7 @@
     if (datos.nombre.trim().length < 2) faltan.push('nombre');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.correo.trim())) faltan.push('correo');
     if (datos.mensaje.trim().length < 5) faltan.push('mensaje');
-    if (faltan.length){ mostrar('mal', 'Revisá estos campos antes de enviar: ' + faltan.join(', ') + '.'); return; }
+    if (faltan.length){ mostrar('mal', 'Revisa estos campos antes de enviar: ' + faltan.join(', ') + '.'); return; }
 
     btn.disabled = true; btn.style.opacity = '.55'; btn.style.cursor = 'wait';
     var textoBoton = btn.textContent; btn.textContent = 'Enviando…';
@@ -181,13 +181,13 @@
         return;   /* el boton queda deshabilitado: reenviar lo mismo no ayuda a nadie */
       }
       mostrar('mal', (res.j && res.j.mensaje) ? res.j.mensaje
-        : 'No pudimos enviar el mensaje. Escribinos a acceso.edicionpro@gmail.com y te respondemos igual.');
+        : 'No pudimos enviar el mensaje. Escríbenos a acceso.edicionpro@gmail.com y te respondemos igual.');
       btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer'; btn.textContent = textoBoton;
     }).catch(function(){
       /* Sin internet, o el endpoint caido. NUNCA se dice "enviado" en este caso:
          un formulario que miente es peor que uno que falla. */
-      mostrar('mal', 'No pudimos conectar con el servidor. Revisá tu conexión e intentá de nuevo, '
-        + 'o escribinos directo a acceso.edicionpro@gmail.com (o al WhatsApp +1 310 497 6059) y te respondemos igual.');
+      mostrar('mal', 'No pudimos conectar con el servidor. Revisa tu conexión e intenta de nuevo, '
+        + 'o escríbenos directo a acceso.edicionpro@gmail.com (o al WhatsApp +1 310 497 6059) y te respondemos igual.');
       btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer'; btn.textContent = textoBoton;
     });
   });
