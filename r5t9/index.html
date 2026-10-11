@@ -82,6 +82,14 @@
   .nota b{color:#fff}
   .anidado{margin:9px 0 0;border-color:#33333a}
 
+  /* guardar acceso (2026-09-22) */
+  .guardar{background:linear-gradient(180deg,#132a1b,#0f1a13);border:1px solid #1f6b3a;border-radius:14px;padding:16px;margin:0 0 14px}
+  .guardar h2{font-size:1.02rem;margin:0 0 6px;color:#fff}
+  .guardar p{font-size:.87rem;color:#c9d6cd;margin:0 0 12px;line-height:1.45}
+  .guardar .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .guardar a,.guardar button{flex:1 1 150px;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:10px 12px;border-radius:10px;font:700 .9rem var(--sans);text-decoration:none;cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:#fff}
+  .guardar .wa{background:#25D366;border-color:#25D366;color:#062b12}
+  .guardar .ok{font-size:.8rem;color:#7ee2a0;margin-top:8px;min-height:1em}
   .soporte{margin-top:24px;text-align:center;background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:24px}
   .soporte p{color:var(--mut);font-size:.92rem;margin-bottom:14px}
   footer{margin-top:32px;text-align:center;color:var(--mut);font-size:.82rem}
@@ -158,6 +166,16 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
     <h1>🎥 Curso CapCut + Viral Cinematics</h1>
     <p>Tu curso completo <b>más el Bono Viral Cinematics</b>, módulo por módulo. Toca el que quieras ver: se abre en una pestaña nueva.</p>
   </header>
+  <div class="guardar" id="guardar">
+    <h2>📌 Guarda este enlace ahora</h2>
+    <p>Esta página es tu acceso al curso <b>para siempre</b>. Mándatela a tu propio WhatsApp o a tu correo para no perderla nunca.</p>
+    <div class="btns">
+      <a class="wa" id="g-wa" href="#" target="_blank" rel="noopener">💬 Enviármelo a mi WhatsApp</a>
+      <a id="g-mail" href="#">✉️ Enviármelo al correo</a>
+      <button type="button" id="g-copy">🔗 Copiar enlace</button>
+    </div>
+    <div class="ok" id="g-ok"></div>
+  </div>
 
   <div class="avisos">
     <div class="aviso"><span>⬇️</span><span><b>DESCARGA los videos antes de verlos.</b> Toca el botón de descarga (arriba a la derecha en Drive). Son clases largas y pesan mucho: en línea no siempre reproducen bien.</span></div>
@@ -305,6 +323,23 @@ apppc:"aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMXZmdDZLQnhHSU1IdmVpS
 wa:"bWFpbHRvOmFjY2Vzby5lZGljaW9ucHJvQGdtYWlsLmNvbT9zdWJqZWN0PVByb2JsZW1hJTIwY29uJTIwbWklMjBhY2Nlc28="
 };
 document.querySelectorAll("[data-l]").forEach(function(e){e.href=atob(L[e.dataset.l])});
+</script>
+<script>
+(function(){
+  try{
+    var url = location.origin + location.pathname;
+    var titulo = document.title.replace('Tu acceso · ','');
+    var msg = 'Mi acceso al ' + titulo + ' (guardar): ' + url;
+    var wa = document.getElementById('g-wa'), ml = document.getElementById('g-mail'), cp = document.getElementById('g-copy'), ok = document.getElementById('g-ok');
+    if(wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(msg);
+    if(ml) ml.href = 'mailto:?subject=' + encodeURIComponent('Mi acceso al ' + titulo) + '&body=' + encodeURIComponent(msg);
+    if(cp) cp.addEventListener('click', function(){
+      var done = function(){ ok.textContent = 'Enlace copiado. Pégalo en tus notas o en tu chat.'; };
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(done, function(){ prompt('Copia tu enlace:', url); }); }
+      else { prompt('Copia tu enlace:', url); }
+    });
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
