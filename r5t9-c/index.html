@@ -119,8 +119,14 @@ fbq('track','PageView');
     var marca = 'fbqp_r5t9';
     if (deStripe && !sessionStorage.getItem(marca)) {
       sessionStorage.setItem(marca,'1');
-      fbq('track','Purchase',{value:11.98,currency:'USD',
-        content_name:'Curso CapCut + Viral Cinematics',content_type:'product',content_ids:['r5t9']});
+      // PURCHASE RETIRADO -- obra `cierre-pendientes-12oct`, 12-oct-2026.
+      // Disparaba por REFERRER de stripe.com, o sea al VOLVER del checkout,
+      // haya pagado el cliente o no: un abandono que aprieta "atras" contaba
+      // como venta. Y mandaba value:11.98 FIJO y SIN eventID, asi que Meta no
+      // lo podia deduplicar contra el Purchase de servidor (CAPI). Era parte
+      // del inflado medido de CapCut: Meta 36 vs caja 18 en 7 dias.
+      // La venta la reporta el servidor, que si prueba el pago en Stripe.
+      // REVERSA: git revert de este commit.
     }
   }catch(e){}
 })();
