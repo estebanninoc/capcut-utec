@@ -198,6 +198,13 @@
   .bump .bp{font-family:var(--disp);font-weight:900;font-size:1.05rem}
   .bump-nota{font-size:.82rem;color:var(--mut);text-align:center;background:#17171a;border:1px dashed #3a3a40;border-radius:10px;padding:8px 12px}
   .bump-nota b{color:#fff}
+  /* --- pago local (obra pago-local-capcut, 2026-10-15): sellos de metodos y 2o boton --- */
+  .pagos{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:14px 0 4px}
+  .pagos .pm{display:inline-flex;align-items:center;gap:6px;background:#17171a;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.78rem;font-weight:700;color:#e7e7ea;letter-spacing:.01em}
+  .pagos .pm img{height:16px;width:auto;display:block}
+  .pagos-t{color:var(--mut);font-size:.8rem;margin-top:12px}
+  .btn.alt{background:transparent;color:#fff;border:1.5px solid #fff;margin-top:10px}
+  .btn.alt:hover{background:#fff;color:#000}
 
   @media(max-width:820px){
     .badges{grid-template-columns:repeat(2,1fr)}
@@ -410,7 +417,9 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
         <div class="bump-nota" id="bump-nota">Marca los dos y te llevas <b>TODO (192 clases) por $12.99</b> — ahorras $40.29</div>
       </div>
       <a href="https://buy.stripe.com/7sY8wO5bocIZaiVfyOdwc00?locale=es-419" class="btn big" id="btn-pago">Quiero mi acceso ahora · $9.99 →</a>
-      <div class="cta-note">Pago seguro con Stripe · Acceso inmediato tras confirmar</div>
+      <a class="btn big alt" id="btn-local" hidden rel="nofollow">Pagar con métodos locales →</a>
+      <div class="pagos-t" id="pagos-t">Pago seguro con Stripe · Acceso inmediato tras confirmar</div>
+      <div class="pagos" id="pagos"></div>
     </div>
   </div>
 </section>
@@ -598,6 +607,48 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
       var bc=document.getElementById('bp-cin'); if(bc) bc.innerHTML='<s>'+fnum(MON.t['9.99'])+'</s> +'+fnum(addon);
     }
     fx.addEventListener('change',up); cin.addEventListener('change',up);
+
+    /* ── PAGO LOCAL por pais (obra pago-local-capcut, 2026-10-15) ──────────────
+       DL_ON=false: solo se muestran los sellos de lo que Stripe ya acepta en el pais.
+       DL_ON=true : ademas aparece el 2o boton, que manda al servidor (.33) a crear el
+                    pago en dLocal Go y redirigir. Se enciende con un PR de 1 linea
+                    cuando el endpoint /pago-local este vivo y probado en sandbox.
+       REVERSA DE 1 LINEA: DL_ON=false. */
+    var DL_ON=false;
+    var DL_BASE='https://api.melamina.pro:8444/pago-local';
+    var ZONA={base:'k2f7',fx:'m8d3',cin:'r5t9',todo:'v4k9'};
+    /* metodos que Stripe acepta HOY segun el pais (Apple/Google Pay dependen del telefono) */
+    var ST_MET={_:['Visa','Mastercard','Apple Pay','Google Pay'],MX:['Visa','Mastercard','OXXO','Apple Pay','Google Pay'],BR:['Visa','Mastercard','Pix','Apple Pay','Google Pay']};
+    /* metodos que suma dLocal Go por pais (lista de precios dLocal Go sep-2024; confirmar en el panel) */
+    var DL_MET={CO:['PSE','Efecty'],MX:['SPEI'],CL:['Webpay','Servipag'],PE:['PagoEfectivo','Transferencia'],AR:['Pago Fácil','Rapipago','Transferencia'],BO:['Transferencia']};
+    var DL_TXT={CO:'Pagar con PSE o Efecty →',MX:'Pagar con SPEI →',CL:'Pagar con Webpay →',PE:'Pagar con PagoEfectivo →',AR:'Pagar con Pago Fácil o transferencia →',BO:'Pagar por transferencia →'};
+    /* logos oficiales: solo los que existan en assets/pagos/<slug>.svg (kits de marca; no se dibujan). Vacio = solo texto. */
+    var LOGOS=[];
+    var CC=null; try{ CC=TZ2CC[(Intl.DateTimeFormat().resolvedOptions().timeZone)||'']||null; }catch(e){}
+    function slug(n){ return n.toLowerCase().replace(/[^a-z0-9]+/g,'-'); }
+    function sello(n){
+      var sp=document.createElement('span'); sp.className='pm';
+      var sl=slug(n);
+      if(LOGOS.indexOf(sl)>-1){ var im=document.createElement('img'); im.src='assets/pagos/'+sl+'.svg'; im.alt=''; im.loading='lazy'; sp.appendChild(im); }
+      sp.appendChild(document.createTextNode(n));
+      return sp;
+    }
+    var dl = DL_ON && CC && DL_MET[CC] ? CC : null;
+    var box=document.getElementById('pagos'), tx=document.getElementById('pagos-t'), bl=document.getElementById('btn-local');
+    if(box){
+      var lista=(ST_MET[CC]||ST_MET._).concat(dl?DL_MET[dl]:[]);
+      for(var i=0;i<lista.length;i++) box.appendChild(sello(lista[i]));
+    }
+    if(tx && dl) tx.textContent='Pago seguro con Stripe o con dLocal Go · Acceso inmediato tras confirmar';
+    if(bl && dl){
+      bl.hidden=false; bl.textContent=DL_TXT[dl];
+      var upLocal=function(){
+        var k = fx.checked&&cin.checked ? 'todo' : fx.checked ? 'fx' : cin.checked ? 'cin' : 'base';
+        bl.href=DL_BASE+'?t=capcut&z='+ZONA[k]+'&cc='+dl+(REF?'&ref='+encodeURIComponent(REF):'');
+      };
+      fx.addEventListener('change',upLocal); cin.addEventListener('change',upLocal); upLocal();
+      bl.addEventListener('click',function(){ try{ fbq('track','InitiateCheckout',{value:parseFloat(window.__precioUSD)||9.99,currency:'USD'}); }catch(e){} });
+    }
     up();
   })();
 </script>
