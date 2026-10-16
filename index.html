@@ -76,7 +76,7 @@
   .phone::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:80px;height:6px;border-radius:99px;background:#1c1c21;z-index:3}
   .screen{border-radius:32px;overflow:hidden;background:#000;border:1px solid #1e1e24}
   .pv{position:relative;overflow:hidden;aspect-ratio:9/12;background:radial-gradient(120% 75% at 50% 22%,rgba(255,255,255,.16),transparent 62%),linear-gradient(165deg,#1e1e24,#060608);display:flex;align-items:center;justify-content:center}
-  .pv .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;pointer-events:none;z-index:1}
+  .pv .yt-hero{position:absolute;top:50%;left:50%;width:102%;height:136%;transform:translate(-50%,-50%);border:0;pointer-events:none;z-index:1}
   .pv .pv-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:brightness(.85)}
   .pv .tag{position:absolute;z-index:2;top:12px;left:12px;font-size:.6rem;font-weight:800;color:#000;background:#fff;padding:4px 10px;border-radius:99px}
   .pv .rec{position:absolute;z-index:2;top:12px;right:12px;font-size:.58rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:5px}
@@ -297,7 +297,6 @@ src="https://www.facebook.com/tr?id=1040771825513533&ev=PageView&noscript=1"></n
           <div class="screen">
             <div class="pv">
               <div class="play"></div>
-              <!-- ephero-1 --><video class="hero-vid" data-src="assets/hero-edicion.mp4" poster="assets/hero-edicion.webp" autoplay muted loop playsinline preload="auto" disablepictureinpicture tabindex="-1" aria-hidden="true"></video>
               <span class="tag">Pantalla verde</span>
               <span class="rec">4K · 60fps</span>
             </div>
@@ -511,16 +510,23 @@ th.forEach(function(i){io.observe(i)})})();
     }
     if (document.readyState === 'complete') galeria(); else window.addEventListener('load', galeria);
 
-    /* hero: video propio (stock libre); el póster sale de entrada y el MP4 se pide tras window.load para no frenar el load;
-       si el navegador frena el autoplay, se reintenta al primer toque */
+    /* hero: mismo clip pero arrancando en 0:03 (salta la cara) + carga inmediata + loop que reinicia en 0:03 */
     (function(){
-      var hv=document.querySelector('.pv .hero-vid');
-      if(!hv) return;
-      hv.muted=true;
-      var go=function(){ var p=hv.play(); if(p&&p.catch) p.catch(function(){}); };
-      var arranca=function(){ if(!hv.getAttribute('src')){ hv.src=hv.getAttribute('data-src'); } go(); };
-      if (document.readyState === 'complete') arranca(); else window.addEventListener('load', arranca);
-      ['touchstart','pointerdown','scroll'].forEach(function(ev){ window.addEventListener(ev,function(){ if(hv.getAttribute('src') && hv.paused) go(); },{once:true,passive:true}); });
+      var hpv=document.querySelector('.pv');
+      if(!hpv || hpv.querySelector('.yt-hero')) return;
+      var hid='thaP4pR_3oQ';
+      var hf=document.createElement('iframe');
+      hf.className='yt-hero';
+      hf.src='https://www.youtube-nocookie.com/embed/'+hid+'?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1&start=5';
+      hf.allow='autoplay; encrypted-media'; hf.tabIndex=-1; hf.setAttribute('aria-hidden','true');
+      hpv.appendChild(hf);
+      hf.addEventListener('load',function(){ try{hf.contentWindow.postMessage('{"event":"listening"}','*');}catch(e){} });
+      var n=0,t=setInterval(function(){ n++; try{hf.contentWindow.postMessage('{"event":"command","func":"playVideo","args":[]}','*');}catch(e){} if(n>8)clearInterval(t); },700);
+      window.addEventListener('message',function(ev){
+        if(ev.source!==hf.contentWindow) return;
+        var d; try{ d=JSON.parse(ev.data);}catch(e){return;}
+        if(d.event==='onStateChange' && d.info===0){ try{ hf.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[5,true]}','*'); hf.contentWindow.postMessage('{"event":"command","func":"playVideo","args":[]}','*'); }catch(e){} }
+      });
     })();
   })();
 </script>
@@ -639,6 +645,6 @@ th.forEach(function(i){io.observe(i)})})();
   var t=setInterval(pinta,1000); pinta();
 })();
 </script>
-<!-- epgal-revert-1 -->
+<!-- ephero-revert-1 -->
 </body>
 </html>
