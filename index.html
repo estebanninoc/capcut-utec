@@ -486,7 +486,7 @@ if(!('IntersectionObserver' in window)){th.forEach(pon);return}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){pon(e.target);io.unobserve(e.target)}})},{rootMargin:'800px 0px'});
 th.forEach(function(i){io.observe(i)})})();
 </script>
-<!-- epcover-1 -->
+<!-- epcover-1 --><!-- epvid-1 -->
 <script>
   (function(){
     var con = navigator.connection || {};
@@ -537,14 +537,20 @@ th.forEach(function(i){io.observe(i)})})();
     /* galeria: los players arrancan al abrir (quedan LISTOS antes de bajar, sin recargar al scroll),
        pero ESCALONADOS ~250ms para no congelar Android viejo con 6 iframes en el mismo tick */
     /* velx2: igual, pero despues de window.load: la galeria esta bajo el primer pantallazo y sus 6 players ya no retienen el load ni le quitan red al hero */
-    function galeria(){
-    document.querySelectorAll('.fx[data-yt]').forEach(function(c, i){
-      setTimeout(function(){
-        if (!c.querySelector('.yt-live')) tapar(crear(c, c.dataset.yt, 'yt-live', '&enablejsapi=1'), 'https://i.ytimg.com/vi/'+c.dataset.yt+'/mqdefault.jpg');
-      }, i * 250);
-    });
+    /* epvid-1: cada video de la galeria arranca cuando su tarjeta se acerca a pantalla, no los 6 a la vez
+       tras el load (eran ~18 MB de YouTube compitiendo con el video de portada en el celular). */
+    function prender(c){
+      if (!c.querySelector('.yt-live')) tapar(crear(c, c.dataset.yt, 'yt-live', '&enablejsapi=1'), 'https://i.ytimg.com/vi/'+c.dataset.yt+'/mqdefault.jpg');
     }
-    if (document.readyState === 'complete') galeria(); else window.addEventListener('load', galeria);
+    function galeria(){
+      var fx = [].slice.call(document.querySelectorAll('.fx[data-yt]'));
+      if (!('IntersectionObserver' in window)) { fx.forEach(function(c, i){ setTimeout(function(){ prender(c); }, i * 250); }); return; }
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if (e.isIntersecting) { io.unobserve(e.target); prender(e.target); } });
+      }, {rootMargin: '150px 0px'});
+      fx.forEach(function(c){ io.observe(c); });
+    }
+    galeria(); /* ya no espera al load: solo vigila; nada se pide hasta que la tarjeta se acerca */
 
     /* hero: mismo clip pero arrancando en 0:03 (salta la cara) + carga inmediata + loop que reinicia en 0:03 */
     (function(){
